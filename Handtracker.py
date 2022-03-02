@@ -9,7 +9,7 @@ cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #langzaam openen opgelost door cap dsho
 
 while True:
    ret , img = cap.read()
-
+   h, w, c = img.shape
    results = hands.process(img)
    print(results.multi_hand_landmarks)
 
@@ -18,7 +18,7 @@ while True:
       for hand_landmark in results.multi_hand_landmarks:
          mp_draw.draw_landmarks(img, hand_landmark, mp_hands.HAND_CONNECTIONS,
                                 mp_draw.DrawingSpec((1, 190, 200), 2,2),
-                                mp_draw.DrawingSpec((18, 255, 255), 2,2)  # drawing specs via Tulp kleuren controle
+                                mp_draw.DrawingSpec((153, 51, 255), 2,2)  # drawing specs via Tulp kleuren controle
                                 )
 
    cv2.imshow("Hand Tracking", img)
