@@ -28,7 +28,7 @@ while True:
            for tip in fingerTips:
                x, y = int(lm_list[tip].x * w), int(lm_list[tip].y * h) #alle vingertoppen uit de lijst x maal breedte, y maal hoogte
                # print(id, ":", x, y) #geeft nu positie breedte en hoogte landmark in int ipv float
-               cv2.circle(img, (x, y), 15, (0, 255, 0), cv2.FILLED) # hiermee teken ik een dikkere cirkel om een specifiek punt
+               cv2.circle(img, (x, y), 10, (0, 255, 0), cv2.FILLED) # hiermee teken ik een dikkere cirkel om een specifiek punt
 
                if lm_list[tip].x < lm_list[tip - 3].x:
                    cv2.circle(img, (x, y), 15, (0, 0,255), cv2.FILLED)
@@ -43,23 +43,25 @@ while True:
                print(finger_fold_status)
 
                if all(finger_fold_status):
-                             # Leuk
-                   if lm_list[thumbTip].y < lm_list[thumbTip - 1].y < lm_list[thumbTip - 2].y:
+                    # Leuk
+                if lm_list[thumbTip].y < lm_list[thumbTip - 1].y < lm_list[thumbTip - 2].y:
                        print("Leuk")
                        cv2.putText(img, "Leuk", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
                             # Niet Leuk
-               if lm_list[thumbTip].y > lm_list[thumbTip - 1].y > lm_list[thumbTip - 2].y:
+                if lm_list[thumbTip].y > lm_list[thumbTip - 1].y > lm_list[thumbTip - 2].y:
                    cv2.putText(img, "Niet leuk", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                    print("Niet leuk")  # Hiermee print ik een niet leuk teken op het scherm
 
 
-
+                if lm_list[fingerTips (0)].y < lm_list[fingerTips(0) -1].y:
+                    cv2.putText(img, "test", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
 
 
    cv2.imshow("Hand Tracking", img)
    cv2.waitKey(1)
+
 
 
 
