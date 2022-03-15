@@ -1,13 +1,25 @@
 import cv2
 import mediapipe as mp
 
+# teken module
+mp_draw = mp.solutions.drawing_utils
+mp_draw_styles = mp.solutions.drawing_styles
+
+#Functies handprestaties verder onderzoeken betreft prestatie
 mp_hands = mp.solutions.hands  #scanner van de handen
+mp_hands.Hands(static_image_mode= True)
+mp_hands.Hands(max_num_hands= 2)
+mp_hands.Hands(min_detection_confidence= 0.5)
 hands = mp_hands.Hands()
-fingerTips = [8, 12, 16, 20]
-thumbTip = 4
-finger_fold_status = []
-mp_draw = mp.solutions.drawing_utils # teken module
+
+
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #langzaam openen opgelost door cap dshow
+
+fingerTips = [8, 12, 16, 20, 4]
+thumbTip = 4
+
+finger_fold_status = []
+Image_Files = []
 
 
 while True:
@@ -25,6 +37,8 @@ while True:
                lm_list.append(lm) #append is toevoegen van een item aan de lijst.
            finger_fold_status = []
 
+
+
            for tip in fingerTips:
                x, y = int(lm_list[tip].x * w), int(lm_list[tip].y * h) #alle vingertoppen uit de lijst x maal breedte, y maal hoogte
                # print(id, ":", x, y) #geeft nu positie breedte en hoogte landmark in int ipv float
@@ -37,25 +51,22 @@ while True:
 
                mp_draw.draw_landmarks(img, hand_landmark, mp_hands.HAND_CONNECTIONS,
                           mp_draw.DrawingSpec((1, 190, 200), 2, 2),
-                          mp_draw.DrawingSpec((153, 51, 255), 2, 2)  # draewing specs via Tulp kleuren controle
+                          mp_draw.DrawingSpec((153, 51, 255), 2, 2)  # drawing specs via Tulp kleuren controle
                           )
 
                print(finger_fold_status)
 
                if all(finger_fold_status):
-                    # Leuk
+
+                # Leuk
                 if lm_list[thumbTip].y < lm_list[thumbTip - 1].y < lm_list[thumbTip - 2].y:
                        print("Leuk")
                        cv2.putText(img, "Leuk", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
-                            # Niet Leuk
+                # Niet Leuk
                 if lm_list[thumbTip].y > lm_list[thumbTip - 1].y > lm_list[thumbTip - 2].y:
                    cv2.putText(img, "Niet leuk", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                    print("Niet leuk")  # Hiermee print ik een niet leuk teken op het scherm
-
-
-                if lm_list[fingerTips (0)].y < lm_list[fingerTips(0) -1].y:
-                    cv2.putText(img, "test", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
 
 
