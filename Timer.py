@@ -64,7 +64,7 @@ while True:
             cv2.waitKey(2000)
 
             # Save the frame
-            cv2.imwrite('camerajpg/camera1.jpg', img)
+            cv2.imwrite('amera1.jpg', img)
             # HERE we can reset the Countdown timer
             # if we want more Capture without closing
             # the camera

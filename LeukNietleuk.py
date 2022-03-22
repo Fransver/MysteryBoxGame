@@ -1,6 +1,13 @@
 import cv2
 import mediapipe as mp
 
+
+# TODO
+# Reset commando toevoegen
+# Timer aflopend of andere refreshrate
+# Verzenden van een commando
+# Vinger code omhoog is fout (rood) of goed (groen). Bij fout
+
 # teken module
 mp_draw = mp.solutions.drawing_utils
 mp_draw_styles = mp.solutions.drawing_styles
@@ -74,6 +81,7 @@ while True:
    cv2.imshow("Hand Tracking", img)
    cv2.waitKey(1)
 
+# Python serial communication arduino
 
 
 
