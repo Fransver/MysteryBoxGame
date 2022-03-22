@@ -15,8 +15,9 @@ hands = mp_hands.Hands()
 
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #langzaam openen opgelost door cap dshow
 
-fingerTips = [8, 12, 16, 20, 4]
-thumbTip = 4
+fingerTips = [mp_hands.HandLandmark.INDEX_FINGER_TIP, mp_hands.HandLandmark.MIDDLE_FINGER_TIP,
+                        mp_hands.HandLandmark.RING_FINGER_TIP, mp_hands.HandLandmark.PINKY_TIP]
+thumbTip = mp_hands.HandLandmark.THUMB_TIP
 
 finger_fold_status = []
 Image_Files = []
@@ -44,7 +45,7 @@ while True:
                # print(id, ":", x, y) #geeft nu positie breedte en hoogte landmark in int ipv float
                cv2.circle(img, (x, y), 10, (0, 255, 0), cv2.FILLED) # hiermee teken ik een dikkere cirkel om een specifiek punt
 
-               if lm_list[tip].x < lm_list[tip - 3].x:
+               if lm_list[tip].x < lm_list[tip - 2].x: #voorbij 2e vingerkootje
                    cv2.circle(img, (x, y), 15, (0, 0,255), cv2.FILLED)
                    finger_fold_status.append(True)
                else: finger_fold_status.append(False)
