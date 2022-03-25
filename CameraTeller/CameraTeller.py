@@ -1,4 +1,8 @@
 import cv2
+import matplotlib.pyplot as plt
+import mediapipe as mp
+import numpy as np
+import time # Timer maken voor aftellen vingertelling
 
 #================================
 # Handen & Functies creëren
@@ -23,7 +27,7 @@ timer = int(20)
 
 #================================
 
-# gegevenCode = [3,2,6,1]
+gegevenCode = [3,2,6,1]
 
 
 #================================
@@ -44,8 +48,16 @@ while cap.isOpened(): # connectie met camera
 
     # Controleren of de marks zijn ontdekt.
     if results.multi_hand_landmarks:
-        # Tel het aantal vingers in het frame
+        # Tel vinger in het frame
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
+
+        # Opmaak camerateller uit de code van de vingerteller halen
+        if (sum(count.values()) == 2):
+                cv2.putText(frame, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+                cv2.rectangle(frame, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
+
+        else:
+                cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
 
 

@@ -93,13 +93,7 @@ def countFingers(image, results, draw=True, display=True):
         cv2.putText(output_image, str(sum(count.values())), (width // 2 - 150, 240), cv2.FONT_HERSHEY_SIMPLEX,
                     3, (220, 20, 60), 10, 10)  # grootte, kleur, dikte cijfers
 
-        # Hier ergens een if om de code te corresponderen ?
-        if (sum(count.values()) == gegevenCode.index(1)):
-            cv2.putText(output_image, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-            cv2.rectangle(output_image, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
 
-        else:
-            cv2.putText(output_image, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
     if display:
         # Display the output image.
