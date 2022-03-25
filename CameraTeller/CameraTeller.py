@@ -1,8 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
-import mediapipe as mp
-import numpy as np
-import time # Timer maken voor aftellen vingertelling
 
 #================================
 # Handen & Functies creëren
@@ -36,24 +32,19 @@ timer = int(20)
 
 while cap.isOpened(): # connectie met camera
 
-    # Read a frame.
     ok, frame = cap.read()
-
-
-
-    # Check if frame is not read properly then continue to the next iteration to read the next frame.
     if not ok:
         continue
 
     # Selfie view door horizontale flip
     frame = cv2.flip(frame, 1)
 
-    # Perform Hands landmarks detection on the frame.
+    # Landmark detectie op het frame
     frame, results = detectHandsLandmarks(frame, hands, display=False)
 
-    # Check if the hands landmarks in the frame are detected.
+    # Controleren of de marks zijn ontdekt.
     if results.multi_hand_landmarks:
-        # Count the number of fingers up of each hand in the frame.
+        # Tel het aantal vingers in het frame
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
 
 

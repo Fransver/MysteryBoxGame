@@ -97,15 +97,7 @@ def countFingers(image, results, draw=True, display=True):
         if (sum(count.values()) == gegevenCode.index(1)):
             cv2.putText(output_image, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
             cv2.rectangle(output_image, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
-        elif(sum(count.values()) == gegevenCode.index(2)):
-            cv2.putText(output_image, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-            cv2.rectangle(output_image, pt1=(150, 150), pt2=(120, 120), color=(0, 255, 0), thickness=-1)
-        elif(sum(count.values()) == gegevenCode.index(3)):
-            cv2.putText(output_image, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-            cv2.rectangle(output_image, pt1=(150, 150), pt2=(120, 120), color=(0, 255, 0), thickness=-1)
-        elif(sum(count.values()) == gegevenCode.index(6)):
-            cv2.putText(output_image, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-            cv2.rectangle(output_image, pt1=(150, 150), pt2=(120, 120), color=(0, 255, 0), thickness=-1)
+
         else:
             cv2.putText(output_image, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
