@@ -1,6 +1,9 @@
 import cv2
 import matplotlib.pyplot as plt
 import mediapipe as mp
+import Hands
+
+
 
 
 
@@ -13,8 +16,6 @@ hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_co
 mp_drawing = mp.solutions.drawing_utils # tekenen om de handen
 
 
-gegevenCode = [3,2,6,1]
-# met index meegeven aan de code
 
 #================================
 
