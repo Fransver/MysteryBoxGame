@@ -18,6 +18,7 @@ cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) #langzaam openen opgelost door cap dsho
 
 
 hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5)
+
 # # Static image mode staat op True zodat hij de input als IMAGE behandeld.
 # # Dit is ideaal voor het behandelen van VIDEO-FRAMES (voor bijvoorbeeld gebarentaal etc.)
 # # Voor het actief tracken moet ik deze dus op FALSE zetten.
@@ -60,20 +61,13 @@ while cap.isOpened(): # connectie met camera
         else:
                 cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
-
-
-
-
-
-
+# ================================
 
     # Display the frame.
     cv2.imshow('VingerTellerCode', frame)
 
-    # Wait for 1ms. If a key is pressed, retreive the ASCII code of the key.
+
     k = cv2.waitKey(1)
-
-
     # ESCAPE is afsluiten programma
     if (k == 27):
         break

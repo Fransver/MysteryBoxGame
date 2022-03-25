@@ -4,29 +4,16 @@ import mediapipe as mp
 import Hands
 
 
+#================================ Handen
 
 
 
-mp_hands = mp.solutions.hands # mediapipe koppelen
-hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5) # de 2 handen
-# Static image mode staat op True zodat hij de input als IMAGE behandeld.
-# Dit is ideaal voor het behandelen van VIDEO-FRAMES (voor bijvoorbeeld gebarentaal etc.)
-# Voor het actief tracken moet ik deze dus op FALSE zetten.
-# Min detection confidence op 0.5 is dat alle trackings die minder betrouwbaar als 50% zijn worden genegeerd.
-mp_drawing = mp.solutions.drawing_utils # tekenen om de handen
-
+hands = Hands.Hands
+mp_hands = mp.solutions.hands
+mp_drawing = Hands.DrawHands
 
 
 #================================
-
-def hands():
-    mp_hands = mp.solutions.hands  # mediapipe koppelen
-    hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5)  # de 2 handen
-    # Static image mode staat op True zodat hij de input als IMAGE behandeld.
-    # Dit is ideaal voor het behandelen van VIDEO-FRAMES (voor bijvoorbeeld gebarentaal etc.)
-    # Voor het actief tracken moet ik deze dus op FALSE zetten.
-    # Min detection confidence op 0.5 is dat alle trackings die minder betrouwbaar als 50% zijn worden genegeerd.
-    mp_drawing = mp.solutions.drawing_utils  # tekenen om de handen
 
 
 def countFingers(image, results, draw=True, display=True):
