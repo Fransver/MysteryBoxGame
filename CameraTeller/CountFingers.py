@@ -1,16 +1,14 @@
 import cv2
 import matplotlib.pyplot as plt
 import mediapipe as mp
-import Hands
 
 
 #================================ Handen
 
 
 
-hands = Hands.Hands
 mp_hands = mp.solutions.hands
-mp_drawing = Hands.DrawHands
+mp_drawing = mp.solutions.drawing_utils
 
 
 #================================
