@@ -1,14 +1,14 @@
 import cv2
 import matplotlib.pyplot as plt
 import mediapipe as mp
-import Hands
+
 
 
 
 #================================
 # Handen creëren
 mp_hands = mp.solutions.hands # mediapipe koppelen
-hands = Hands.Hands
+hands = mp_hands.Hands
 mp_drawing = mp.solutions.drawing_utils
 #================================
 
