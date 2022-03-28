@@ -66,8 +66,8 @@ while cap.isOpened():# connectie met camera
                 cv2.rectangle(frame, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
                 cv2.putText(frame, "1e", (270, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
                 ingevoerdeCode.append(gegevenCode[0])
-                print("Test 1 keer code nummer 1")
-                gegevenCode.pop(0)
+                print("Test 1 keer code nummer 1") # test met 1 keer uitvoeren van code na goede antwoord
+                gegevenCode.pop(0) # Met pop haal ik de eerste index weer uit de lijst
                 print(ingevoerdeCode)
 
 
