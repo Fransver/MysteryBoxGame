@@ -1,3 +1,5 @@
+**Portfolio 29-03-22**
+
 In dit project heb ik de afgelopen weken gewerkt aan ons eerste proto-type spel met gebruik van Hand-recognition. 
 Vanaf de start wilde ik naast het leren van Python, een aantal veel gebruikte bibliotheken eigen maken.
 Dit om later via Tensorflow een eigen script te trainen op basis van spraak en camera-detectie. 
