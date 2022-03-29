@@ -6,6 +6,7 @@ from CountFingers import countFingers
 from CountFingers import mp_hands
 from arduino.SerialArduinoMocked import SerialArduinoMocked
 
+
 #================================ Arduino Creëren
 
 arduino = SerialArduinoMocked()
@@ -25,6 +26,7 @@ hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_co
 
 #Timer creëren
 timer = int(20)
+lockMess = {}
 
 #================================ CODES
 
@@ -58,25 +60,29 @@ while cap.isOpened():# connectie met camera
     if results.multi_hand_landmarks:
         # Tel vinger in het frame
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
+
         
 
         # Opmaak camerateller uit de code van de vingerteller halen
         if (sum(count.values()) == gegevenCode[0]):
+
                 cv2.putText(frame, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
                 cv2.rectangle(frame, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
-                cv2.putText(frame, "1e", (270, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-
-
                 ingevoerdeCode.append(gegevenCode[0])
-
                 print("Test 1 keer code nummer " + str(gegevenCode[0])) # test met 1 keer uitvoeren van code met goede antwoord
                 message = str(gegevenCode[0])
                 arduino.send_to_arduino(message)
                 gegevenCode.pop(0) # Met pop haal ik de eerste index weer uit de lijst
                 print(ingevoerdeCode)
 
+
+
+
                 if not gegevenCode:
+                    cv2.putText(frame, "Einde spel", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                     print("Einde spel")
+                    key = cv2.waitKey(2000)
+                    key
                     break
 
 
@@ -85,8 +91,9 @@ while cap.isOpened():# connectie met camera
 
 
 
-
-# ================================
+    # ================================
+    cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0),
+                2)  # Code branden, maar hoe even laten staan
 
     # Display the frame.
     cv2.imshow('VingerTellerCode', frame)
