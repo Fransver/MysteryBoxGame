@@ -1,6 +1,6 @@
 import cv2
 
-from TextBox import InvoerCodeConsole
+
 from HandenDectector import detectHandsLandmarks
 from CountFingers import countFingers
 from CountFingers import mp_hands
@@ -68,7 +68,10 @@ while cap.isOpened():# connectie met camera
 
 
                 ingevoerdeCode.append(gegevenCode[0])
-                print("Test 1 keer code nummer 1") # test met 1 keer uitvoeren van code na goede antwoord
+
+                print("Test 1 keer code nummer " + str(gegevenCode[0])) # test met 1 keer uitvoeren van code met goede antwoord
+                message = str(gegevenCode[0])
+                arduino.send_to_arduino(message)
                 gegevenCode.pop(0) # Met pop haal ik de eerste index weer uit de lijst
                 print(ingevoerdeCode)
 
