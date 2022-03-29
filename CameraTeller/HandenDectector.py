@@ -31,8 +31,6 @@ def detectHandsLandmarks(image, hands, draw=True, display=True):
 
     # Controleren of er landmarks gevonden zijn en tekenen als dit zo is.
     if results.multi_hand_landmarks and draw:
-
-        # Iterate over the found hands.
         for hand_landmarks in results.multi_hand_landmarks:
             mp_drawing.draw_landmarks(image=output_image, landmark_list=hand_landmarks,
                                       connections=mp_hands.HAND_CONNECTIONS,
@@ -41,9 +39,8 @@ def detectHandsLandmarks(image, hands, draw=True, display=True):
                                       connection_drawing_spec=mp_drawing.DrawingSpec(color=(0, 255, 0),
                                                                                      thickness=2, circle_radius=2))
 
-    # Check if the original input image and the output image are specified to be displayed.
     if display:
-        # Display the original input image and the output image.
+        # Display origineel en output plaatje
         plt.figure(figsize=[15, 15])
         plt.subplot(121)
         plt.imshow(image[:, :, ::-1])
@@ -58,8 +55,7 @@ def detectHandsLandmarks(image, hands, draw=True, display=True):
         plt.show()
 
 
-    # Otherwise
     else:
 
-        # Return the output image and results of hands landmarks detection.
+        # Return output met de marks erop.
         return output_image, results
