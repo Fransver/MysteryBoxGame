@@ -6,7 +6,7 @@ from CountFingers import countFingers
 from CountFingers import mp_hands
 from arduino.SerialArduinoMocked import SerialArduinoMocked
 
-
+#Aanvulling na sprintdemo
 #================================ Arduino Creëren
 
 arduino = SerialArduinoMocked()
