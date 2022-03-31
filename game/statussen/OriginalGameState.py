@@ -1,7 +1,7 @@
 import cv2
-from game.mysteryBox.HandenDectector import detectHandsLandmarks
-from game.mysteryBox.CountFingers import countFingers
-from game.mysteryBox.CountFingers import mp_hands
+from game.layer.HandenDectector import detectHandsLandmarks
+from game.layer.CountFingers import countFingers
+from game.layer.CountFingers import mp_hands
 from arduino.SerialArduinoMocked import SerialArduinoMocked
 
 

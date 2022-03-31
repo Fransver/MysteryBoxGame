@@ -1,7 +1,9 @@
-import game.statussen.OriginalGameState
-from game import *
+import game.statussen.FrameworkState
+
+
+
 
 
 # Eerste versie van de game-state
-firstState = game.statussen.OriginalGameState.InitialState
+codeSpel = game.statussen.FrameworkState
 
