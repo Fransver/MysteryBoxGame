@@ -1,10 +1,14 @@
 import cv2
 import game.commands.Codes
 import game.layer.Hands
+import keyboard
+
 
 from game.layer.HandenDectector import detectHandsLandmarks
+from game.layer.UpdateTextIngevoerdeCode import *
 from game.layer.CountFingers import countFingers
 from arduino.SerialArduinoMocked import SerialArduinoMocked
+
 
 
 # ================================ Arduino Creëren
@@ -24,6 +28,8 @@ lichtjesLijst = game.commands.Codes.lichtjeslijst()
 print(str(geheimeCodeRandom[2])) #test random code
 
 
+
+
 # ================================ Handendetectie zonder game elementen
 
 while cap.isOpened():  # connectie met camera
@@ -32,19 +38,24 @@ while cap.isOpened():  # connectie met camera
     if not ok:
         continue
 
+
+
     # Selfie view door horizontale flip
     frame = cv2.flip(frame, 1)
 
+
     # Landmark detectie op het frame
     frame, results = detectHandsLandmarks(frame, hands, display=False)
+
 
     # Controleren of de marks zijn ontdekt.
     if results.multi_hand_landmarks:
         # Tel vinger in het frame
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
 
-        # Opmaak camerateller uit de code van de vingerteller halen
-        if sum(count.values()) == geheimeCodeStandaard[0]:
+
+        # Het is gelukt om de actie van toevoegen code pas op de knop V te doen
+        if sum(count.values()) == geheimeCodeStandaard[0] and keyboard.is_pressed('v')  :
 
             cv2.putText(frame, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
             cv2.rectangle(frame, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
@@ -56,6 +67,10 @@ while cap.isOpened():  # connectie met camera
             geheimeCodeStandaard.pop(0)  # Met pop haal ik de eerste index weer uit de lijst
             print(ingevoerdeCode)
 
+            cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
+                        (0, 255, 0),
+                        2)  # Code branden, maar hoe even laten staan
+
             if not geheimeCodeStandaard:
                 cv2.putText(frame, "Einde spel", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                 print("Einde spel")
@@ -63,16 +78,22 @@ while cap.isOpened():  # connectie met camera
                 break
 
 
-        else:
-            cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+        # else:
+        #     cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+
 
     # ================================
     cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
                 (0, 255, 0),
                 2)  # Code branden, maar hoe even laten staan
 
+
+
     # Display the frame.
     cv2.imshow('VingerTellerCode', frame)
+
+
+
 
     k = cv2.waitKey(1)
 
@@ -80,10 +101,9 @@ while cap.isOpened():  # connectie met camera
     if (k == 27):
         break
 
+
+
 cap.release()
 cv2.destroyAllWindows()
-
-
-
 
 
