@@ -1,10 +1,13 @@
 import game.commands.Codes
 import game.layer.Hands
+import game.commands.Messages
 
 from game.layer.HandenDectector import detectHandsLandmarks
 from game.layer.UpdateTextIngevoerdeCode import *
+
 from game.layer.CountFingers import countFingers
 from arduino.SerialArduinoMocked import SerialArduinoMocked
+
 
 
 
@@ -22,9 +25,11 @@ ingevoerdeCode = []
 geheimeCodeStandaard = game.commands.Codes.geheimecodetest()
 geheimeCodeRandom = game.commands.Codes.geheimecodesrandom()
 lichtjesLijst = game.commands.Codes.lichtjeslijst()
-print(str(geheimeCodeRandom[2])) #test random code
 
 
+# ================================ Intro Message
+
+introMessage = game.commands.Messages.consoleMessageCameraGame()
 
 
 # ================================ Handendetectie zonder game elementen
@@ -34,8 +39,6 @@ while cap.isOpened():  # connectie met camera
     ok, frame = cap.read()
     if not ok:
         continue
-
-
 
     # Selfie view door horizontale flip
     frame = cv2.flip(frame, 1)
