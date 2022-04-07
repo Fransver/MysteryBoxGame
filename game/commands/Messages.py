@@ -1,5 +1,7 @@
 
 
+
+
 def consoleMessageCameraGame():
     print("Welkom bij het spel: RAAD DE CODE!! ")
     print("Doel van het spel: raad de code door je vingers op te steken")
@@ -10,6 +12,3 @@ def consoleMessageCameraGame():
     print("\t4. Heb je het fout? Dan verschijnt er een foutmelding!")
     print("\n=======================")
     print("\nHEEL VEEL SUCCES !!!!")
-
-
-

@@ -11,6 +11,10 @@ def geheimecodetest():
     code = [4,5,3,2]
     return code
 
+def identiekeCijferCodeTest():
+    code = [2,2,2,2]
+    return  code
+
 def lichtjeslijst():
     lichtjeEen = "#52, lichtje 1 aan"
     lichtjeTwee = "#53, lichtje 2 aan"

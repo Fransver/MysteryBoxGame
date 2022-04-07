@@ -1,11 +1,6 @@
-import game.statussen.MainGameState
+import game.states.CameraGameStateMain
 
+# Als test simpel spel of actie ervoor maken.
 
-
-
-
-# Originele staat van de game voor de start van het spel
-
-codeSpel = game.statussen.MainGameState
-
-
+# Aanroepen CameraGame
+codeSpelCamera = game.states.CameraGameStateMain
