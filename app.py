@@ -4,3 +4,4 @@ import game.states.CameraGameStateMain
 
 # Aanroepen CameraGame
 codeSpelCamera = game.states.CameraGameStateMain
+#test
