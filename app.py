@@ -1,7 +1,12 @@
 import game.states.CameraGameStateMain
 
-# Als test simpel spel of actie ervoor maken.
 
-# Aanroepen CameraGame
-codeSpelCamera = game.states.CameraGameStateMain
-#test
+
+
+def main():
+
+    game.states.CameraGameStateMain.CameraGame()  #uitvoeren van de CameraGame
+
+
+if __name__ == "__main__":
+     main()
