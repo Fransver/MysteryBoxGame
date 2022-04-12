@@ -15,9 +15,9 @@ class geheimeCode:
     #     code = random.sample(geheimeCode, 4)
     #     return code
     #
-    def geheimecodetest(self):
-        code = [4,5,3,2]
-        return code
+    # def geheimecodetest(self):
+    #     code = [4,5,3,2]
+    #     return code
     #
     # def identiekeCijferCodeTest(self, code):
     #     code = [2,2,2,2]

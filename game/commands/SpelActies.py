@@ -11,7 +11,7 @@ arduino = SerialArduinoMocked()
 
 # ================================ Code
 ingevoerdeCode = []
-geheimeCodeStandaard = []
+geheimeCodeStandaard = [2,3,4,1]
 
 
 

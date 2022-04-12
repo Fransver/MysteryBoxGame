@@ -4,7 +4,8 @@ import game.states.CameraGameStateMain
 
 ingevoerdeCode = []
 
-# frame = game.states.CameraGameStateMain.frame
+
+frame = any(cv2.VideoCapture(0, cv2.CAP_DSHOW).read())
 
 # ================================ Ik krijg het Frame niet nullable om in te zetten los van de class
 

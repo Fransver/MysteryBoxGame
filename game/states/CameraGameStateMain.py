@@ -1,7 +1,5 @@
-import game.commands.Codes
 import random
 import game.layer.Hands
-import game.commands.Messages
 import time
 import keyboard
 
@@ -10,6 +8,8 @@ from game.layer.HandenDectector import detectHandsLandmarks
 from game.layer.cvActie import *
 from game.layer.CountFingers import countFingers
 from arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.commands.Codes import geheimeCode
+from game.commands.Messages import consoleMessageCameraGame
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -23,13 +23,12 @@ hands = game.layer.Hands.handen()
 # ================================ Code
 ingevoerdeCode = []
 optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-geheimeCodeStandaard = game.commands.Codes.geheimeCode("TestCode1", [2,4,8,1])
-geheimeCodeRandom = game.commands.Codes.geheimeCode("RandomCode1", random.sample(optiesRandomCode, 4))
+geheimeCodeRandom = geheimeCode("random", random.sample(optiesRandomCode, 4))
+geheimeCodeStandaard = geheimeCode("standaard", [1,2,3,4])
 
 # ================================ Intro Message
 
-introMessage = game.commands.Messages.consoleMessageCameraGame()
-
+introMessage = consoleMessageCameraGame()
 
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
@@ -72,10 +71,11 @@ def CameraGame():
 
         # ================================
 
-
+        # geheimeCodeCv()  Ik krijg deze maar niet losgekoppeld ingezet in deze code ipv het onderstaande.
         cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
                     (0, 255, 0),
                     2)
+
 
         # Display the frame.
         cv2.imshow('VingerTellerCode', frame)
@@ -96,5 +96,4 @@ def CameraGame():
             cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
                         (0, 255, 0),
                         2)
-
 
