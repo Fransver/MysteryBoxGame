@@ -4,7 +4,7 @@ import cv2
 from game.layer.HandenDectector import detectHandsLandmarks
 from game.layer.CountFingers import countFingers
 from game.layer.CountFingers import mp_hands
-from arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 
 #Aanvulling na sprintdemo
 #================================ Arduino Creëren

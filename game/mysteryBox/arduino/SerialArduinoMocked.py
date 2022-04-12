@@ -1,4 +1,4 @@
-from arduino.SerialArduino import SerialArduino
+from game.mysteryBox.arduino.SerialArduino import SerialArduino
 
 
 class SerialArduinoMocked(SerialArduino):

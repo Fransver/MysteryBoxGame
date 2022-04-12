@@ -1,4 +1,4 @@
-from arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 
 #================================ Arduino Creëren
 

@@ -1,6 +1,4 @@
-import game.commands.Codes
-import keyboard
-from arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 
 # ================ Attributen
 

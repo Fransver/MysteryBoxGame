@@ -3,11 +3,10 @@ import game.layer.Hands
 import time
 import keyboard
 
-
 from game.layer.HandenDectector import detectHandsLandmarks
 from game.layer.cvActie import *
 from game.layer.CountFingers import countFingers
-from arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import geheimeCode
 from game.commands.Messages import consoleMessageCameraGame
 
@@ -24,11 +23,12 @@ hands = game.layer.Hands.handen()
 ingevoerdeCode = []
 optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 geheimeCodeRandom = geheimeCode("random", random.sample(optiesRandomCode, 4))
-geheimeCodeStandaard = geheimeCode("standaard", [1,2,3,4])
+geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 
 # ================================ Intro Message
 
 introMessage = consoleMessageCameraGame()
+
 
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
@@ -55,7 +55,7 @@ def CameraGame():
             if sum(count.values()) == geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 ingevoerdeCode.append(geheimeCodeStandaard.code[0])
                 message = str(geheimeCodeStandaard.code[0])
-                time.sleep(1)  # kort moment van input zodat er niet meteen achter elkaar gedrukt kan worden.
+                time.sleep(0.5)  # kort moment van input zodat er niet meteen achter elkaar gedrukt kan worden.
                 arduino.send_to_arduino(message)
                 print(ingevoerdeCode)
                 geheimeCodeStandaard.code.pop(0)  # Met pop haal ik de eerste index weer uit de lijst
@@ -76,7 +76,6 @@ def CameraGame():
                     (0, 255, 0),
                     2)
 
-
         # Display the frame.
         cv2.imshow('VingerTellerCode', frame)
         k = cv2.waitKey(1)
@@ -89,11 +88,4 @@ def CameraGame():
 
     cap.release()
     cv2.destroyAllWindows()
-
-    class visualCVACties:
-
-        def geheimecodeCV(self):
-            cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                        (0, 255, 0),
-                        2)
 
