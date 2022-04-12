@@ -1,9 +1,11 @@
 import cv2
-import game.commands.Codes
+
+import game.states.CameraGameStateMain
 
 ingevoerdeCode = []
 
-frame = None
+frame = game.states.CameraGameStateMain.frame
+
 # ================================ Ik krijg het Frame niet nullable om in te zetten los van de class
 
 

@@ -5,6 +5,7 @@ import game.commands.Messages
 import time
 import keyboard
 
+
 from game.layer.HandenDectector import detectHandsLandmarks
 from game.layer.cvActie import *
 from game.layer.CountFingers import countFingers
@@ -22,7 +23,7 @@ hands = game.layer.Hands.handen()
 # ================================ Code
 ingevoerdeCode = []
 optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-geheimeCodeStandaard = game.commands.Codes.geheimeCode("TestCode1", [1, 2, 3, 4])
+geheimeCodeStandaard = game.commands.Codes.geheimeCode("TestCode1", [2,4,8,1])
 geheimeCodeRandom = game.commands.Codes.geheimeCode("RandomCode1", random.sample(optiesRandomCode, 4))
 
 # ================================ Intro Message
@@ -68,9 +69,10 @@ def CameraGame():
 
             if sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-                # nietGoed()
+
         # ================================
-        # geheimeCodeCv()
+
+
         cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
                     (0, 255, 0),
                     2)
@@ -87,3 +89,12 @@ def CameraGame():
 
     cap.release()
     cv2.destroyAllWindows()
+
+    class visualCVACties:
+
+        def geheimecodeCV(self):
+            cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
+                        (0, 255, 0),
+                        2)
+
+
