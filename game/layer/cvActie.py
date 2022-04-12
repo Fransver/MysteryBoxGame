@@ -4,7 +4,7 @@ import game.states.CameraGameStateMain
 
 ingevoerdeCode = []
 
-frame = game.states.CameraGameStateMain.frame
+# frame = game.states.CameraGameStateMain.frame
 
 # ================================ Ik krijg het Frame niet nullable om in te zetten los van de class
 
