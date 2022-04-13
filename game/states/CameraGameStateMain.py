@@ -4,17 +4,20 @@ import time
 import keyboard
 
 from game.layer.HandenDectector import detectHandsLandmarks
+from game.commands.SpelActies import *
 from game.layer.cvActie import *
 from game.layer.CountFingers import countFingers
 from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
-from game.commands.Codes import geheimeCode
-from game.commands.Messages import consoleMessageCameraGame
+from game.commands.Codes import *
+from game.commands.Messages import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
 
+
 # ================================ # Camera instellen
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # langzaam openen opgelost door cap dshow
+
 
 # ================================ HANDS
 hands = game.layer.Hands.handen()
@@ -37,46 +40,33 @@ def CameraGame():
         ok, frame = cap.read()
         if not ok:
             continue
-
         # Selfie view door horizontale flip
         frame = cv2.flip(frame, 1)
 
         # ================================ De classes met Handendetector en CountFingers
-        # Landmark detectie op het frame
-        frame, results = detectHandsLandmarks(frame, hands, display=False)
 
+        frame, results = detectHandsLandmarks(frame, hands, display=False)
         # Controleren of de marks zijn ontdekt.
         if results.multi_hand_landmarks:
-            # Tel vinger in het frame
             frame, fingers_statuses, count = countFingers(frame, results, display=False)
 
             # ================================ En interactie met het spel
-            # Het is gelukt om de actie van toevoegen code pas op de knop V te doen
             if sum(count.values()) == geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
-                ingevoerdeCode.append(geheimeCodeStandaard.code[0])
-                message = str(geheimeCodeStandaard.code[0])
-                time.sleep(0.5)  # kort moment van input zodat er niet meteen achter elkaar gedrukt kan worden.
-                arduino.send_to_arduino(message)
-                print(ingevoerdeCode)
-                geheimeCodeStandaard.code.pop(0)  # Met pop haal ik de eerste index weer uit de lijst
+                telActie(geheimeCodeStandaard, ingevoerdeCode)
 
-                if not geheimeCodeStandaard:
-                    cv2.putText(frame, "Einde spel", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-                    print("Einde spel")
-                    time.sleep(5)
-                    break
+            if len(ingevoerdeCode) == 4:  # lijst tot aantal nummers gevuld? Dan complete-actie !!
+                eindeSpel(frame)
+                print("Einde spel")
+                time.sleep(5)
+                break
 
             if sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
-                cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+                nietGoed(frame)
 
         # ================================
+        geheimeCodeCv(frame)
 
-        # geheimeCodeCv()  Ik krijg deze maar niet losgekoppeld ingezet in deze code ipv het onderstaande.
-        cv2.putText(frame, "Geheime code:  " + str(ingevoerdeCode), (70, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                    (0, 255, 0),
-                    2)
-
-        # Display the frame.
+        # Display het frame.
         cv2.imshow('VingerTellerCode', frame)
         k = cv2.waitKey(1)
 

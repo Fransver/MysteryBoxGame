@@ -44,7 +44,7 @@ def countFingers(image, results, draw=True, display=True):
         hand_landmarks = results.multi_hand_landmarks[hand_index]
 
         thumb_tip_y = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y
-        thumb_mcp_y = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP - 1].y
+        thumb_mcp_y = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP - 2].y
 
         # Iterate over the indexes of the tips landmarks of each finger of the hand.
         for tip_index in fingers_tips:
@@ -54,7 +54,7 @@ def countFingers(image, results, draw=True, display=True):
             # Dit is eigenlijk het belangrijkste van wat er gebeurt in het script
             # Ik gebruik hier de vingertoppen en als die boven het middenpunt komen verandert de status
             # Ook komt er dan een punt bij voor iedere opgestoken vinger
-            if hand_landmarks.landmark[tip_index].y < hand_landmarks.landmark[tip_index - 2].y:
+            if hand_landmarks.landmark[tip_index].y < hand_landmarks.landmark[tip_index - 1].y:
 
                 fingers_statuses[hand_label.upper() + "_" + finger_name] = True
 
