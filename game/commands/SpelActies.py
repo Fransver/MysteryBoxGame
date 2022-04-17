@@ -1,3 +1,4 @@
+from game.layer.HandenDectector import detectHandsLandmarks
 from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 import time
 
@@ -20,3 +21,4 @@ def telActie(geheimeCodeStandaard, ingevoerdeCode):
     arduino.send_to_arduino(message)
     print(ingevoerdeCode)
     geheimeCodeStandaard.code.pop(0)  # Met pop haal ik de eerste index weer uit de lijst
+
