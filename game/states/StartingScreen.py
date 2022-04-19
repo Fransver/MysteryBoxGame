@@ -7,14 +7,10 @@ from game.layer.tkinter.Photos import *
 # ====================================== Scherm creëren
 root = tk.Tk()
 root.configure(background="steel blue")
-
 e = Entry(root, width=30, borderwidth=5)  # input gebruiker
 
+
 # ====================================== Photo
-
-
-
-
 
 
 # ====================================== Game selecteren voor startscherm
@@ -26,9 +22,10 @@ def click_name():
     nameLabel.pack()
     nameLabel.configure(background="steel blue")
 
+
 def name_button():
     button_name = Button(root, text="Send", fg='blue', command=click_name)
-    button_name.pack()
+    button_name.place(x=390, y=480)
 
 
 def window_start():
@@ -42,11 +39,8 @@ def window_start():
     click_name()
     name_button()
 
-
     root.mainloop()
 
 
 if __name__ == '__main__':
     window_start()
-
-
