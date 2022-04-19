@@ -1,4 +1,7 @@
 import random
+
+import cv2
+
 import game.layer.Hands
 import keyboard
 
@@ -15,6 +18,8 @@ arduino = SerialArduinoMocked()
 
 # ================================ # Camera instellen
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # langzaam openen opgelost door cap dshow
+
+
 
 
 # ================================ HANDS
@@ -40,6 +45,7 @@ def CameraGame():
             continue
         # Selfie view door horizontale flip
         frame = cv2.flip(frame, 1)
+
 
         # ================================ De classes met Handendetector en CountFingers
 

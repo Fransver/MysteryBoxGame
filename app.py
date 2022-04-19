@@ -1,10 +1,11 @@
 from game.states.CompleteWindow import *
-from game.states.CameraGameStateMain import *
+from game.states.StartingScreen import *
 
 
 def main():
-    CameraGame()  # uitvoeren van de CameraGame
-    window_complete() # Scherm wat opkomt als het spel voltooid is 
+    window_start()
+
+    window_complete()  # Scherm wat opkomt als het spel voltooid is
 
 
 if __name__ == "__main__":
