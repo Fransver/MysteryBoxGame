@@ -8,9 +8,8 @@ def window_complete():
     root.title("Complete Screen test")
     root.geometry('600x400+50+50')
 
-    start_button(root)
-    label_home(root)
-
+    label_complete(root)
+    quit_button(root)
 
     root.mainloop()
 

@@ -32,8 +32,6 @@ def countFingers(image, results, draw=True, display=True):
     fingers_tips = [mp_hands.HandLandmark.INDEX_FINGER_TIP, mp_hands.HandLandmark.MIDDLE_FINGER_TIP,
                     mp_hands.HandLandmark.RING_FINGER_TIP, mp_hands.HandLandmark.PINKY_TIP]
 
-
-
     # Iterate over de gevonden handen
     for hand_index, hand_info in enumerate(results.multi_handedness):
 
@@ -63,13 +61,8 @@ def countFingers(image, results, draw=True, display=True):
                     # Update the status of the thumb in the dictionary to true.
                     fingers_statuses[hand_label.upper() + "_THUMB"] = True
 
-
                 # Increment the count of the fingers up of the hand by 1.
                 count[hand_label.upper()] += 1
-
-
-
-
 
     if draw:
         # Hier schrijf ik het totaal aantal vingers in de camera-feed

@@ -21,10 +21,11 @@ def geheimeCodeCv(frame, ingevoerdeCode):
 def nietGoed(frame):
     cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
+
 def eindeSpel(frame):
     cv2.putText(frame, "Einde spel", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
     print("Einde spel")
-    time.sleep(5)
+
 
 def displayFrame(frame):
     cv2.imshow('VingerTellerCode', frame)

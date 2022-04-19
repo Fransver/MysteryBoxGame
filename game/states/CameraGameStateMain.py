@@ -1,8 +1,6 @@
 import random
-
-import cv2
-
 import game.layer.Hands
+import time
 import keyboard
 
 from game.commands.SpelActies import *
@@ -15,19 +13,17 @@ from game.commands.Messages import *
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
 
+# ================================ Timer Creëren
 
 # ================================ # Camera instellen
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # langzaam openen opgelost door cap dshow
-
-
-
 
 # ================================ HANDS
 hands = game.layer.Hands.handen()
 
 # ================================ Code
 ingevoerdeCode = []
-optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 geheimeCodeRandom = geheimeCode("random", random.sample(optiesRandomCode, 4))
 geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 
@@ -38,7 +34,16 @@ introMessage = consoleMessageCameraGame()
 
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
+    prev = time.time()
+    TIMER = int(40)
+
     while cap.isOpened():  # connectie met camera
+
+        cur = time.time()
+
+        if cur - prev >= 1:
+            prev = cur
+            TIMER = TIMER-1
 
         ok, frame = cap.read()
         if not ok:
@@ -46,6 +51,13 @@ def CameraGame():
         # Selfie view door horizontale flip
         frame = cv2.flip(frame, 1)
 
+        # current time
+
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(frame, str(TIMER),
+                    (200, 250), font,
+                    7, (0, 255, 255),
+                    4, cv2.LINE_AA)
 
         # ================================ De classes met Handendetector en CountFingers
 
@@ -68,15 +80,16 @@ def CameraGame():
 
         # ================================
         geheimeCodeCv(frame, ingevoerdeCode)
+
         # Display het frame.
         displayFrame(frame)
-        # cv2.imshow('VingerTellerCode', frame)
-        k = cv2.waitKey(1)
-        # ================================ EXIT
+
+        k = cv2.waitKey(1)  #
 
         # ESCAPE is afsluiten programma
         if k == 27:
             break
+    # ================================ EXIT
+
     cap.release()
     cv2.destroyAllWindows()
-

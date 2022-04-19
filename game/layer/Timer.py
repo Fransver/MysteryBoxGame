@@ -1,21 +1,18 @@
 import cv2
 import time
 
-
 # SET THE COUNTDOWN TIMER
 # for simplicity we set it to 3
 # We can also take this as input
-TIMER = int(3)
+TIMER = int(20)
 
 # Open the camera
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
+cap = cv2.VideoCapture(0)
 
 while True:
 
+    # Read and display each frame
     ret, img = cap.read()
-    img.flags.writeable = False
-
     cv2.imshow('a', img)
 
     # check for the key pressed
@@ -29,7 +26,6 @@ while True:
 
         while TIMER >= 0:
             ret, img = cap.read()
-            img.flags.writeable = False
 
             # Display countdown on each frame
             # specify the font and draw the
@@ -37,9 +33,9 @@ while True:
             font = cv2.FONT_HERSHEY_SIMPLEX
             cv2.putText(img, str(TIMER),
                         (200, 250), font,
-                        3, (0, 255, 255),
+                        7, (0, 255, 255),
                         4, cv2.LINE_AA)
-            cv2.imshow('TestTimer', img)
+            cv2.imshow('a', img)
             cv2.waitKey(125)
 
             # current time
@@ -48,9 +44,9 @@ while True:
             # Update and keep track of Countdown
             # if time elapsed is one second
             # than decrease the counter
-            if cur -prev >= 1:
+            if cur - prev >= 1:
                 prev = cur
-                TIMER = TIMER -1
+                TIMER = TIMER - 1
 
         else:
             ret, img = cap.read()
@@ -64,7 +60,8 @@ while True:
             cv2.waitKey(2000)
 
             # Save the frame
-            cv2.imwrite('Camera1.jpg', img)
+            cv2.imwrite('camera.jpg', img)
+
             # HERE we can reset the Countdown timer
             # if we want more Capture without closing
             # the camera
