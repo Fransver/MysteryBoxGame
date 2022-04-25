@@ -4,12 +4,23 @@ from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.Labels import *
 from game.layer.tkinter.Photos import *
 
-# ====================================== Scherm creëren
 root = tk.Tk()
 root.configure(background="steel blue")
 e = Entry(root, width=30, borderwidth=5)  # input gebruiker
 
-
+""""
+class Window :
+    def __init__(self):
+        # ====================================== Scherm creëren
+        root = tk.Tk()
+        root.configure(background="steel blue")
+        e = Entry(root, width=30, borderwidth=5)  # input gebruiker
+        
+        self.root = root
+    def update(self):
+        ...
+    def end_game(self):
+"""
 # ====================================== Photo
 
 

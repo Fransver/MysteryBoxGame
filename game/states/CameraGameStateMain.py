@@ -34,7 +34,7 @@ introMessage = consoleMessageCameraGame()
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
     prev = time.time()
-    TIMER = int(3)
+    TIMER = int(40)
 
     while cap.isOpened():  # connectie met camera
 

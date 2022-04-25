@@ -5,6 +5,7 @@ from game.states.StartingScreen import *
 game = CameraGame  # Game selecteren.
 
 
+
 def main():
     window_start()  # Startscherm voor selecteren spel
     game()  # Aanroepen van de game
