@@ -9,7 +9,7 @@ from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
 from game.states.FailScreen import *
-
+from game.states.StartingScreen import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -30,11 +30,13 @@ geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 
 introMessage = consoleMessageCameraGame()
 
+# Window Fail
+
 
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
     prev = time.time()
-    TIMER = int(40)
+    TIMER = int(3)
 
     while cap.isOpened():  # connectie met camera
 
@@ -79,7 +81,8 @@ def CameraGame():
         if TIMER <= 0:
             cap.release()
             cv2.destroyAllWindows()
-            window_fail()
+            Window().end_game()  # State - Update Fail
+
 
 
         # Display het frame.
