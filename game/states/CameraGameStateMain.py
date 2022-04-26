@@ -1,7 +1,8 @@
-import random
 import game.layer.Hands
 import keyboard
+import random
 
+from game.states.StartingScreen import *
 from game.commands.SpelActies import *
 from game.layer.opencv.cvActie import *
 from game.layer.CountFingers import countFingers
@@ -9,7 +10,6 @@ from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
 from game.states.FailScreen import *
-from game.states.StartingScreen import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -30,7 +30,8 @@ geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 
 introMessage = consoleMessageCameraGame()
 
-# Window Fail
+
+# ================================ Window
 
 
 # ================================ Handendetectie zonder game elementen
@@ -81,9 +82,6 @@ def CameraGame():
         if TIMER <= 0:
             cap.release()
             cv2.destroyAllWindows()
-            Window().end_game()  # State - Update Fail
-
-
 
         # Display het frame.
         displayFrame(frame)

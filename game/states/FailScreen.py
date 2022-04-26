@@ -1,19 +1,27 @@
 import tkinter as tk
 from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.Labels import *
+from game.layer.tkinter.Entry import *
+from game.layer.tkinter.Photos import *
 
 
-def window_fail():
-    root = tk.Tk()
-    root.title("Fail Fail Fail")
-    root.geometry('600x400+50+50')
-    root.configure(background="red")
+class FailScreen(Tk):
+    def __init__(self):
+        super().__init__()
 
-    label_fail(root)
-    quit_button(root)
+        self.geometry('800x600+50+50')
+        self.title("fail fail fail")
+        self.configure(background='red')
 
-    root.mainloop()
+        self.start_photo = StartPhoto(self)
+
+        # Buttons
+        self.reset_button = ResetButton(root=self, game=...)
+
+        # Labels
+        self.fail_label = HomeLabel(self).update_tryagain()
 
 
 if __name__ == '__main__':
-    window_fail()
+    fail_screen = FailScreen()
+    fail_screen.mainloop()

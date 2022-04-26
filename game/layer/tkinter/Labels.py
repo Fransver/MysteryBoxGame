@@ -1,25 +1,19 @@
 from tkinter import *
 
 
-def label_home(root):
-    home_label = Label(root, text="Mystery Box", font='Aerial 17 bold italic')
-    home_label.pack(pady=30)
-    home_label.configure(background="steel blue")
+class HomeLabel:
+    def __init__(self, root):
+        self.var = StringVar()
+        self.var.set("Mystery Box")
+        self.home_label = Label(root, textvariable=self.var, font='Aerial 17 bold italic')
+        self.home_label.pack(pady=30)
 
+    def remove_home_label(self):
+        self.home_label.destroy()
 
-def label_complete(root):
-    complete_label = Label(root, text="Complete !!!", font='Aerial 17 bold italic')
-    complete_label.pack(pady=30)
-    complete_label.configure(background="steel blue")
+    def update_tryagain(self):
+        self.var.set("Try Again")
 
+    def update_complete(self):
+        self.var.set("Complete!")
 
-def label_fail(root):
-    fail_label = Label(root, text="You Failed !!!", font='Aerial 17 bold italic', background="red")
-    fail_label.pack(pady=30)
-    fail_label.configure(background="steel blue")
-
-
-def label_start(root):
-    start_label = Label(root, text="Mystery Box", font='Aerial 17 bold italic')
-    start_label.pack(pady=30)
-    start_label.configure(background="steel blue")

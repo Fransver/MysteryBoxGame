@@ -1,9 +1,7 @@
+from CameraGameStateMain import *
 import tkinter as tk
-
-# Proberen vanaf hier aan te roepen.
 from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.Labels import *
-from game.layer.tkinter.Entry import *
 from game.layer.tkinter.Photos import *
 
 
@@ -15,31 +13,24 @@ class Window(tk.Tk):
         self.geometry('800x600+50+50')
         self.configure(background="steel blue")
 
-        # Input
-        self.input_name = Input(root=self)
-
         # Labels
-        self.home_label = label_home(self)
+        self.home_label = HomeLabel(root=self)
 
         # Buttons
-        self.start_button = start_button(self)
-        self.quit_button = quit_button(self)
-        self.name_button = NameButton(root=self)
+        # self.name_button = NameButton(root=self)
+        self.start_button = StartButton(root=self, game=CameraGame)
+        self.quit_button = QuitButton(root=self)
 
         # Photo
-        self.start_photo = start_photo(self)
+        self.start_photo = StartPhoto(root=self)
 
-    def update_complete(self):
-        self.home_label = label_complete(self)
-
-    def end_game(self):
-        self.input_name = Input.update_remove_input(self.input_name)
-        self.home_label = label_fail(self)
-        self.name_button.remove_namebutton()
-
+    def update_fail(self):
+        self.configure(background='red')
+        self.title("fail fail fail")
+        self.home_label.update_tryagain()
 
 
 if __name__ == '__main__':  # Testing Starting Window
     start_window = Window()
-    start_window.end_game()
-    start_window.mainloop()
+    start_window.update_fail()
+    start_window.mainloop()  # Main Loop runt het scherm
