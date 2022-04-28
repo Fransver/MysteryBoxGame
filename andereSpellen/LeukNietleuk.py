@@ -1,11 +1,7 @@
 import cv2
 import mediapipe as mp
 
-# TODO
-# Reset commando toevoegen
-# Timer aflopend of andere refreshrate
-# Verzenden van een commando
-# Vinger code omhoog is fout (rood) of goed (groen). Bij fout
+
 
 # teken module
 mp_draw = mp.solutions.drawing_utils

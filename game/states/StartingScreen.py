@@ -5,6 +5,9 @@ from game.layer.tkinter.Labels import *
 from game.layer.tkinter.Photos import *
 
 
+# TODO: Hoe kan ik werken met de score uit de game om schermen te updaten??
+# TODO: Verder ontwikkelen van reset, complete en fail scherm.
+
 class Window(tk.Tk):
     def __init__(self):
         # ====================================== Scherm creëren
@@ -32,5 +35,6 @@ class Window(tk.Tk):
 
 if __name__ == '__main__':  # Testing Starting Window
     start_window = Window()
-    start_window.update_fail()
+    # start_window.update_fail()
     start_window.mainloop()  # Main Loop runt het scherm
+    quit()

@@ -31,11 +31,13 @@ geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 introMessage = consoleMessageCameraGame()
 
 
-# ================================ Window
+# TODO: Hoe werk ik met een meegegeven score in de game voor functies GUI??
 
+# ================================ Window
 
 # ================================ Handendetectie zonder game elementen
 def CameraGame():
+    score = True
     prev = time.time()
     TIMER = int(3)
 
@@ -53,9 +55,9 @@ def CameraGame():
         # Selfie view door horizontale flip
         frame = cv2.flip(frame, 1)
 
-        ## ================================ Timer Text
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        cv2.putText(frame, str(TIMER), (100, 450), font, 2, (0, 255, 255), 4, cv2.LINE_AA)
+        # ================================ Timer Text
+        font_cv = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(frame, str(TIMER), (100, 450), font_cv, 2, (0, 255, 255), 4, cv2.LINE_AA)
 
         # ================================ De classes met Handendetector en CountFingers
 
@@ -80,8 +82,10 @@ def CameraGame():
         geheimeCodeCv(frame, ingevoerdeCode)
 
         if TIMER <= 0:
+            score = False
             cap.release()
             cv2.destroyAllWindows()
+            quit()
 
         # Display het frame.
         displayFrame(frame)
@@ -94,6 +98,7 @@ def CameraGame():
 
     cap.release()
     cv2.destroyAllWindows()
+    quit()
 
 
 if __name__ == '__main__':
