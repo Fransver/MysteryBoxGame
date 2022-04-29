@@ -1,6 +1,7 @@
 import game.layer.Hands
 import keyboard
 import random
+import game.commands
 
 from game.states.StartingScreen import *
 from game.commands.SpelActies import *
@@ -9,6 +10,7 @@ from game.layer.CountFingers import countFingers
 from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
+from game.commands.Score import *
 from game.states.FailScreen import *
 
 # ================================ Arduino Creëren
@@ -30,14 +32,25 @@ geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
 
 introMessage = consoleMessageCameraGame()
 
+# ================================ Score
 
-# TODO: Hoe werk ik met een meegegeven score in de game voor functies GUI??
+score = Score()
+
+
+# TODO: Gebruik member van class als score
+# TODO: Maak van de game een class
 
 # ================================ Window
 
+
+class CameraGame:
+    def __init__(self):
+        self.score = score.score
+        self.game = camera_game
+
+
 # ================================ Handendetectie zonder game elementen
-def CameraGame():
-    score = True
+def camera_game():
     prev = time.time()
     TIMER = int(3)
 
@@ -82,10 +95,10 @@ def CameraGame():
         geheimeCodeCv(frame, ingevoerdeCode)
 
         if TIMER <= 0:
-            score = False
             cap.release()
             cv2.destroyAllWindows()
-            quit()
+            score.update_score_loss()
+            break
 
         # Display het frame.
         displayFrame(frame)
@@ -94,12 +107,17 @@ def CameraGame():
         # ESCAPE is afsluiten programma
         if k == 27:
             break
+
     # ================================ EXIT
 
     cap.release()
     cv2.destroyAllWindows()
-    quit()
 
 
 if __name__ == '__main__':
-    CameraGame()
+    game = CameraGame()
+    game.game()
+    score = CameraGame().score
+    print(str(score))
+    if score == 2:
+        print("test fail succes")

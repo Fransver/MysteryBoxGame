@@ -8,7 +8,7 @@ from tkinter import *
 class ResetButton:
     def __init__(self, root, game):
         self.button_reset = Button(root, text="Reset", width=10, height=3, font=4, command=game)
-        self.button_reset.place(x=350, y=150)
+        self.button_reset.place(x=670, y=510)
 
     def remove_reset_button(self):
         self.button_reset.destroy()
@@ -18,7 +18,7 @@ class ResetButton:
 
 
 class StartButton:
-    def __init__(self,root, game):
+    def __init__(self, root, game):
         self.button_start = Button(root, text="Start", font=4, height=3, width=10, fg='blue', command=game)
         self.button_start.place(x=670, y=510)
 
@@ -43,6 +43,7 @@ class QuitButton:
     def __init__(self, root):
         self.quit_button = Button(root, text="Quit", fg='blue', width=10, height=3, font=4, command=root.destroy)
         self.quit_button.place(x=30, y=510)
+
 
     def remove_quit_button(self):
         self.quit_button.destroy()

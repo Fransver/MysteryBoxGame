@@ -1,7 +1,6 @@
 import tkinter as tk
 from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.Labels import *
-from game.layer.tkinter.Entry import *
 from game.layer.tkinter.Photos import *
 
 
@@ -17,6 +16,7 @@ class FailScreen(Tk):
 
         # Buttons
         self.reset_button = ResetButton(root=self, game=...)
+        self.quit_button = QuitButton(root=self)
 
         # Labels
         self.fail_label = HomeLabel(self).update_tryagain()
@@ -25,3 +25,4 @@ class FailScreen(Tk):
 if __name__ == '__main__':
     fail_screen = FailScreen()
     fail_screen.mainloop()
+    quit()
