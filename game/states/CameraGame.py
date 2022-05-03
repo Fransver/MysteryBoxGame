@@ -2,8 +2,8 @@ import game.layer.Hands
 import keyboard
 import random
 import game.commands
+import time
 
-from game.states.StartingScreen import *
 from game.commands.SpelActies import *
 from game.layer.opencv.cvActie import *
 from game.layer.CountFingers import countFingers
@@ -25,8 +25,9 @@ hands = game.layer.Hands.handen()
 # ================================ Code
 ingevoerdeCode = []
 optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-geheimeCodeRandom = geheimeCode("random", random.sample(optiesRandomCode, 4))
-geheimeCodeStandaard = geheimeCode("standaard", [1, 2, 3, 4])
+geheimeCodeRandom = geheimeCode(random.sample(optiesRandomCode, 4))
+geheimeCodeStandaard = geheimeCode([1, 2, 3, 4])
+
 
 # ================================ Intro Message
 
@@ -52,7 +53,7 @@ class CameraGame:
 # ================================ Handendetectie zonder game elementen
 def camera_game():
     prev = time.time()
-    TIMER = int(3)
+    TIMER = int(20)  # <------ Timer secondes aanpassen
 
     while cap.isOpened():  # connectie met camera
 
@@ -81,24 +82,32 @@ def camera_game():
             frame, fingers_statuses, count = countFingers(frame, results, display=False)
 
             # ================================ En interactie met het spel
+
             if sum(count.values()) == geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 telActie(geheimeCodeStandaard, ingevoerdeCode)
 
-            if len(ingevoerdeCode) == 4:  # lijst tot aantal nummers gevuld? Dan complete-actie !!
-                eindeSpel(frame)
+            if len(ingevoerdeCode) == 4:  # Probleem index out of range opgelost met len ipv range(len)
+                score.update_score_win()
+                print("Succes!!")
+                print("score is " + str(score.score))
                 break
 
-            if sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
+            elif sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 nietGoed(frame)
 
         # ================================
         geheimeCodeCv(frame, ingevoerdeCode)
 
         if TIMER <= 0:
-            cap.release()
-            cv2.destroyAllWindows()
             score.update_score_loss()
+            print(score.score)
+            if score.score == 2:
+                print("test met timer aflopen actie")
+                eindeSpel(frame)
+                time.sleep(5)
             break
+
+        # voor de exit kan ik nog een CV actie plaatsen, testen!
 
         # Display het frame.
         displayFrame(frame)
@@ -117,7 +126,4 @@ def camera_game():
 if __name__ == '__main__':
     game = CameraGame()
     game.game()
-    score = CameraGame().score
-    print(str(score))
-    if score == 2:
-        print("test fail succes")
+    quit()

@@ -6,6 +6,7 @@ import time
 
 arduino = SerialArduinoMocked()
 
+
 def actionCountFingers(geheimeCodeStandaard, ingevoerdeCode):
     print("Test 1 keer code nummer " + str(geheimeCodeStandaard[0]))
     message = str(geheimeCodeStandaard[0])
@@ -13,6 +14,7 @@ def actionCountFingers(geheimeCodeStandaard, ingevoerdeCode):
     geheimeCodeStandaard.pop(0)  # Met pop haal ik de eerste index weer uit de lijst
     print(ingevoerdeCode)
     pass
+
 
 def telActie(geheimeCodeStandaard, ingevoerdeCode):
     ingevoerdeCode.append(geheimeCodeStandaard.code[0])
