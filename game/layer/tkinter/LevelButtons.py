@@ -2,6 +2,8 @@ from tkinter import *
 from game.games.CameraGameMedium import *
 from game.games.CameraEasy import *
 
+# Hier nu de spellen met Lambda doorgegeven aan de knoppen.
+
 
 class LevelEasyButton:
     def __init__(self, root):

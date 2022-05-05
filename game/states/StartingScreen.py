@@ -1,8 +1,5 @@
 import tkinter as tk
 
-from games.CameraEasy import *
-from games.CameraGameMedium import *
-from games.CameragameHard import *
 from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.LevelButtons import *
 from game.layer.tkinter.Labels import *
@@ -10,8 +7,6 @@ from game.layer.tkinter.Photos import *
 from game.layer.tkinter.Input import *
 
 
-# TODO: Hoe kan ik werken met de score uit de game om schermen te updaten??
-# TODO: Verder ontwikkelen van reset, complete en fail scherm.
 
 
 class Window(tk.Tk):
@@ -28,9 +23,9 @@ class Window(tk.Tk):
 
         # Labels
         self.home_label = HomeLabel(root=self)
+        self.game_label = Gamelabel(root=self)
 
         # Buttons
-        self.camera_game_button = CameraGameButton(root=self)
         self.sound_game_button = SoundGameButton(root=self)
         self.quit_button = QuitButton(root=self)
         self.input_button = InputButton(root=self, code_print=self.code_input.e.get())  # <----gebruiken invoer blank

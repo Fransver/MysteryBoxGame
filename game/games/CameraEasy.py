@@ -37,8 +37,7 @@ introMessage = consoleMessageCameraGame()
 score = Score()
 
 
-# TODO: Gebruik member van class als score
-# TODO: Maak van de game een class
+
 
 # ================================ Window
 

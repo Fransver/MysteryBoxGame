@@ -17,3 +17,11 @@ class HomeLabel:
     def update_complete(self):
         self.var.set("Complete!")
 
+
+class Gamelabel:
+    def __init__(self, root):
+        self.var = StringVar()
+        self.var.set("Camera Game")
+        self.home_label = Label(root, textvariable=self.var, font='Aerial 20 bold italic', fg='red',
+                                relief=SUNKEN, padx=2, border=5, width=20)
+        self.home_label.place(relx=0.28, rely=0.2)
