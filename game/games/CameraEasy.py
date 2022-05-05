@@ -37,8 +37,6 @@ introMessage = consoleMessageCameraGame()
 score = Score()
 
 
-
-
 # ================================ Window
 
 class CameraGameEasy:
@@ -115,7 +113,7 @@ def camera_game_level_1(timer):
         if k == 27:
             break
 
-    cap.release()
+    # cap.release()  # dit blockt het opnieuw openen van de webcam
     cv2.destroyAllWindows()
 
 

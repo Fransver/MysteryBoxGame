@@ -7,8 +7,6 @@ from game.layer.tkinter.Photos import *
 from game.layer.tkinter.Input import *
 
 
-
-
 class Window(tk.Tk):
 
     def __init__(self):  # spel meegeven in de app
@@ -45,7 +43,6 @@ class Window(tk.Tk):
 
 
 if __name__ == '__main__':  # Testing Starting Window
-
     start_window = Window()
     start_window.mainloop()
     print("buiten mainloop")

@@ -1,3 +1,4 @@
+import os.path
 from tkinter import *
 from PIL import ImageTk, Image
 from pathlib import Path
@@ -6,7 +7,9 @@ import os
 # TODO: Gebruik van module os om absolute path om te zetten.
 # TODO: Testen van het pad op laptop
 
-start_photo = "D:/Pycharm/HandTrackingFrans/game/layer/tkinter/tkinterimg/box.jpg"
+start_photo = "C:/Users/frans.verberne/PycharmProjects/handtrackingfrans/game/layer/tkinter/tkinterimg/box.jpg"
+
+start_join = os.path.join("/tkinterimg", "/box.jpg")
 
 
 class StartPhoto:
