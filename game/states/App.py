@@ -1,5 +1,5 @@
 from game.states.StartingScreen import Window
-from states.CameraGame import CameraGame
+from games.CameraEasy import CameraGame
 
 
 def main():

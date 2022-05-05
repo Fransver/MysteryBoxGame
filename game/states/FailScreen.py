@@ -1,6 +1,4 @@
-import tkinter as tk
-
-from states.CameraGame import *
+from games.CameraEasy import *
 from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.Labels import *
 from game.layer.tkinter.Photos import *

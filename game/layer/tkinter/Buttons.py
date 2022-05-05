@@ -25,8 +25,8 @@ class ResetButton:
 
 
 class CameraGameButton:
-    def __init__(self, root, game):
-        self.button_camera = Button(root, text="CameraGame", font=4, height=3, width=12, fg='blue', command=game)
+    def __init__(self, root):
+        self.button_camera = Button(root, text="CameraGame", font=4, height=3, width=12, fg='blue')
         self.button_camera.place(x=670, y=510)
 
     def remove_start_button(self):

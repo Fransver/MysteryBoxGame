@@ -11,7 +11,7 @@ from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
 from game.commands.Score import *
-from game.states.FailScreen import *
+from game.commands.LevelTimer import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -28,7 +28,6 @@ optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 geheimeCodeRandom = geheimeCode(random.sample(optiesRandomCode, 4))
 geheimeCodeStandaard = geheimeCode([1, 2, 3, 4])
 
-
 # ================================ Intro Message
 
 introMessage = consoleMessageCameraGame()
@@ -43,17 +42,16 @@ score = Score()
 
 # ================================ Window
 
-
-class CameraGame:
+class CameraGameEasy:
     def __init__(self):
         self.score = score.score
-        self.game = camera_game
+        self.game = camera_game_level_1
 
 
-# ================================ Handendetectie zonder game elementen
-def camera_game():
+# ================================ CameraGame functie
+def camera_game_level_1(timer):
     prev = time.time()
-    TIMER = int(20)  # <------ Timer secondes aanpassen
+    TIMER = timer  # <------ Timer secondes aanpassen moeilijkheidsgraad via class LevelTimer
 
     while cap.isOpened():  # connectie met camera
 
@@ -88,6 +86,7 @@ def camera_game():
 
             if len(ingevoerdeCode) == 4:  # Probleem index out of range opgelost met len ipv range(len)
                 score.update_score_win()
+                # melodietje Arduino ??
                 print("Succes!!")
                 print("score is " + str(score.score))
                 break
@@ -117,13 +116,11 @@ def camera_game():
         if k == 27:
             break
 
-    # ================================ EXIT
-
     cap.release()
     cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
-    game = CameraGame()
-    game.game()
+    game = CameraGameEasy()
+    game.game(timer=TimeGame().seconds)
     quit()
