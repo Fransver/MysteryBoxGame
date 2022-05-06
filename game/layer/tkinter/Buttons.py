@@ -86,7 +86,7 @@ class ExplanationButton:
 
     def pop_up(self):
         win = tkinter.Toplevel()
-        win.geometry('600x200+50+50')
+        win.geometry('600x300+50+50')
         win.title("Test Explain")
 
         explain_label = Label(win, text="Welcome to the CameraGame!!\n"
