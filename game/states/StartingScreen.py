@@ -7,6 +7,8 @@ from game.layer.tkinter.Photos import *
 from game.layer.tkinter.Input import *
 
 
+# TODO: Maak Explanation Screen
+
 class Window(tk.Tk):
 
     def __init__(self):  # spel meegeven in de app
@@ -17,17 +19,17 @@ class Window(tk.Tk):
         self.configure(background="steel blue")
 
         # Entry
-        self.code_input = Input(root=self)
+        # self.code_input = Input(root=self)
 
         # Labels
         self.home_label = HomeLabel(root=self)
         self.game_label = Gamelabel(root=self)
 
         # Buttons
-        self.sound_game_button = SoundGameButton(root=self)
+        # self.sound_game_button = SoundGameButton(root=self)
+        self.explain_button = ExplanationButton(root=self)
         self.quit_button = QuitButton(root=self)
-        self.input_button = InputButton(root=self, code_print=self.code_input.e.get())  # <----gebruiken invoer blank
-        self.next_button = NextLevelButton(root=self)
+        # self.input_button = InputButton(root=self, code_print=self.code_input.e.get())  # <----gebruiken invoer blank
 
         self.level_1_button = LevelEasyButton(root=self)
         self.level_2_button = LevelMediumButton(root=self)

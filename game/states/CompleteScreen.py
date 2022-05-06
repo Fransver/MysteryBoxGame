@@ -1,10 +1,7 @@
-import tkinter as tk
-from game.layer.tkinter.Buttons import *
-from game.layer.tkinter.Labels import *
-from game.layer.tkinter.Photos import *
+from game.states.StartingScreen import Window
 
 
-class CompleteScreen(tk.Tk):
+class CompleteScreen(Window):
     def __init__(self):
         super().__init__()
 
@@ -12,10 +9,7 @@ class CompleteScreen(tk.Tk):
         self.title("You have won the game!!!")
         self.configure(background='green')
 
-        self.start_photo = StartPhoto(self)
 
-        # Buttons
-        self.quit_button = QuitButton(root=self)
-
-        # Labels
-        self.title = HomeLabel(self).update_complete()
+if __name__ == '__main__':
+    complete_screen = CompleteScreen()
+    complete_screen.mainloop()

@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 
@@ -78,9 +79,27 @@ class InputButton:
 
 # =========================== Class NextLevel
 
-class NextLevelButton:
+class ExplanationButton:
     def __init__(self, root):
-        self.next_level = Button(root, text="Next Level", fg='blue', width=12, height=3, font=4, command=lambda :
-                                 print("play a harder level of the game, for example, "
-                                       "more numbers in the same time"))
+        self.next_level = Button(root, text="Explain", fg='blue', width=12, height=3, font=4, command=self.pop_up)
         self.next_level.place(x=670, y=220)
+
+    def pop_up(self):
+        win = tkinter.Toplevel()
+        win.geometry('600x200+50+50')
+        win.title("Test Explain")
+
+        explain_label = Label(win, text="Welcome to the CameraGame!!\n"
+                                        "The goal of the game is to crack the code before the timer dies.\n\n"
+                                        "The Camera will scan your hands and counts the number of fingers.\n If you"
+                                        "want to send a number, the other player must press the button.\n"
+                                        "After 0.5 seconds the code will be send to the Mystery Box.\n\n"
+                                        "If the number is not in the code, A error-message will appear.\n"
+                                        "If the number is correct, it will appear in the GIVEN CODE section\n\n"
+                                        "GOOD LUCK !!\n\n")
+
+        explain_label.pack()
+
+        explain_button_close = QuitButton(win)
+        explain_button_close.quit_button.pack()
+
