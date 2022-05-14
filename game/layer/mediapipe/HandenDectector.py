@@ -2,15 +2,14 @@ import cv2
 import matplotlib.pyplot as plt
 import mediapipe as mp
 
-
-
-
-#================================
+# ================================
 # Handen creëren
-mp_hands = mp.solutions.hands # mediapipe koppelen
+mp_hands = mp.solutions.hands  # mediapipe koppelen
 hands = mp_hands.Hands
 mp_drawing = mp.solutions.drawing_utils
-#================================
+
+
+# ================================
 
 def detectHandsLandmarks(image, hands, draw=True, display=True):
     # De functie om landmarks te detecteren.
@@ -44,18 +43,17 @@ def detectHandsLandmarks(image, hands, draw=True, display=True):
         plt.figure(figsize=[15, 15])
         plt.subplot(121)
         plt.imshow(image[:, :, ::-1])
-        plt.title("Original Image", fontsize = 40)
+        plt.title("Original Image", fontsize=40)
         plt.show()
         plt.axis('off')
 
         plt.subplot(122)
-        plt.imshow(output_image[:, :, ::-1])
-        plt.title("Output", fontsize = 40)
+        plt.imshow(output_image[:, :, ::-1])  # imshow / matplot en tkinter Matplot vervangen door Tkinter.
+        plt.title("Output", fontsize=40)
         plt.axis('off')
         plt.show()
 
 
     else:
-
         # Return output met de marks erop.
         return output_image, results

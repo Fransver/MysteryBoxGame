@@ -24,7 +24,8 @@ def thread_game_hard():
 class LevelEasyButton:
 
     def __init__(self, root):
-        self.level_easy_button = Button(root, text="Easy", fg='blue', width=12, height=3, font=4,
+        self.level_easy_button = Button(root, text="Easy", fg='#6FBF1F', width=8, height=2,
+                                        font="Times 15 italic bold",
                                         command=thread_game_easy)
         self.level_easy_button.place(x=30, y=400)
 
@@ -34,7 +35,8 @@ class LevelEasyButton:
 
 class LevelMediumButton:
     def __init__(self, root):
-        self.level_medium_button = Button(root, text="Medium", fg='blue', width=12, height=3, font=4,
+        self.level_medium_button = Button(root, text="Medium", fg='#303473', width=8, height=2,
+                                          font="Times 15 italic bold",
                                           command=thread_game_medium)
         self.level_medium_button.place(x=30, y=310)
 
@@ -44,7 +46,8 @@ class LevelMediumButton:
 
 class LevelHardButton:
     def __init__(self, root):
-        self.level_medium_button = Button(root, text="Hard", fg='blue', width=12, height=3, font=4,
+        self.level_medium_button = Button(root, text="Hard", fg='#D9483B', width=8, height=2,
+                                          font="Times 15 italic bold",
                                           command=thread_game_hard)
         self.level_medium_button.place(x=30, y=220)
 

@@ -1,12 +1,12 @@
-import game.layer.Hands
+import game.layer.mediapipe.Hands
 import keyboard
 import random
 import game.commands
-import time
 
 from game.commands.SpelActies import *
+from game.layer.mediapipe.HandenDectector import detectHandsLandmarks
 from game.layer.opencv.cvActie import *
-from game.layer.CountFingers import countFingers
+from game.layer.mediapipe.CountFingers import countFingers
 from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
@@ -20,17 +20,17 @@ arduino = SerialArduinoMocked()
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # langzaam openen opgelost door cap dshow
 
 # ================================ HANDS
-hands = game.layer.Hands.handen()
+hands = game.layer.mediapipe.Hands.handen()
 
 # ================================ Code
 ingevoerdeCode = []
 optiesRandomCode = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-geheimeCodeRandom = geheimeCode(random.sample(optiesRandomCode, 4))
-geheimeCodeStandaard = geheimeCode([1, 2, 3, 4])
+geheimeCodeRandom = GeheimeCode(random.sample(optiesRandomCode, 4))
+geheimeCodeStandaard = GeheimeCode([4, 8, 3, 1])
 
 # ================================ Intro Message
 
-introMessage = consoleMessageCameraGame()
+introMessage = console_message_explain()
 
 # ================================ Score
 
@@ -79,7 +79,7 @@ def camera_game_level_1(timer):
             # ================================ En interactie met het spel
 
             if sum(count.values()) == geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
-                telActie(geheimeCodeStandaard, ingevoerdeCode)
+                count_action(geheimeCodeStandaard, ingevoerdeCode)
 
             if len(ingevoerdeCode) == 4:  # Probleem index out of range opgelost met len ipv range(len)
                 score.update_score_win()

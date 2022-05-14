@@ -61,7 +61,8 @@ class NameButton:
 
 class QuitButton:
     def __init__(self, root):
-        self.quit_button = Button(root, text="Quit", fg='blue', width=12, height=3, font=4, command=root.destroy)
+        self.quit_button = Button(root, text="Quit", fg='#4768B1', width=8, height=2,
+                                  font="Times 15 italic bold", command=root.destroy)
         self.quit_button.place(x=30, y=510)
 
     def remove_quit_button(self):
@@ -72,7 +73,7 @@ class QuitButton:
 
 class InputButton:
     def __init__(self, root, code_print):
-        self.input_button = Button(root, text="Send", fg='blue', width=12, height=3, font=4, command=lambda:
+        self.input_button = Button(root, text="Send", fg='#4768B1', width=12, height=3, font=4, command=lambda:
                                    print(str(code_print))) # Hoe code gebruiken input?
         self.input_button.place(x=670, y=310)
 
@@ -81,8 +82,9 @@ class InputButton:
 
 class ExplanationButton:
     def __init__(self, root):
-        self.next_level = Button(root, text="Explain", fg='blue', width=12, height=3, font=4, command=self.pop_up)
-        self.next_level.place(x=670, y=220)
+        self.next_level = Button(root, text="Explain", fg='#4768B1', width=8, height=2,
+                                 font="Times 15 italic bold", command=self.pop_up)
+        self.next_level.place(x=630, y=220)
 
     def pop_up(self):
         win = tkinter.Toplevel()

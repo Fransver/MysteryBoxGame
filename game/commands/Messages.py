@@ -1,8 +1,11 @@
 
 
+class Message:
+    def __int__(self):
+        console_message_explain()
 
 
-def consoleMessageCameraGame():
+def console_message_explain():
     print("Welkom bij het spel: RAAD DE CODE!! ")
     print("Doel van het spel: raad de code door je vingers op te steken")
     print("=======================")

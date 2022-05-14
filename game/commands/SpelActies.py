@@ -1,13 +1,12 @@
-from game.layer.HandenDectector import detectHandsLandmarks
 from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
 import time
 
-# ================ Attributen
+# ================ Attributes
 
 arduino = SerialArduinoMocked()
 
 
-def actionCountFingers(geheimeCodeStandaard, ingevoerdeCode):
+def action_count_fingers(geheimeCodeStandaard, ingevoerdeCode):
     print("Test 1 keer code nummer " + str(geheimeCodeStandaard[0]))
     message = str(geheimeCodeStandaard[0])
     arduino.send_to_arduino(message)
@@ -16,7 +15,7 @@ def actionCountFingers(geheimeCodeStandaard, ingevoerdeCode):
     pass
 
 
-def telActie(geheimeCodeStandaard, ingevoerdeCode):
+def count_action(geheimeCodeStandaard, ingevoerdeCode):
     ingevoerdeCode.append(geheimeCodeStandaard.code[0])
     message = str(geheimeCodeStandaard.code[0])
     time.sleep(0.5)  # kort moment van input zodat er niet meteen achter elkaar gedrukt kan worden.

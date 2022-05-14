@@ -1,6 +1,6 @@
 
 
-class geheimeCode:
+class GeheimeCode:
     def __init__(self, code):
         self.code = code
 

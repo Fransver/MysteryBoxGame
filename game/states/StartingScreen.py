@@ -4,10 +4,8 @@ from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.LevelButtons import *
 from game.layer.tkinter.Labels import *
 from game.layer.tkinter.Photos import *
-from game.layer.tkinter.Input import *
+from PIL import ImageTk, Image
 
-
-# TODO: Maak Explanation Screen
 
 class Window(tk.Tk):
 
@@ -16,7 +14,7 @@ class Window(tk.Tk):
         super().__init__()
         self.title('MysteryBox Starting Screen')
         self.geometry('800x600+50+50')
-        self.configure(background="steel blue")
+        self.configure(background="#A67538")
 
         # Entry
         # self.code_input = Input(root=self)
@@ -35,6 +33,9 @@ class Window(tk.Tk):
         self.level_2_button = LevelMediumButton(root=self)
         self.level_3_button = LevelHardButton(root=self)
 
+        self.lmain = Label(self)
+        self.lmain.place(x=200, y=250)
+
         # Photo
         self.start_photo = StartPhoto(root=self)
 
@@ -43,9 +44,21 @@ class Window(tk.Tk):
         self.title("fail fail fail")
         self.home_label.update_tryagain()
 
+    # function for video streaming
+    # def video_stream(self):
+    #     cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    #     _, frame = cam.read()
+    #     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
+    #     img = Image.fromarray(cv2image)
+    #     imgtk = ImageTk.PhotoImage(image=img)
+    #     self.lmain.imgtk = imgtk
+    #     self.lmain.configure(image=imgtk)
+    #     self.lmain.after(1, self.video_stream)
+
 
 if __name__ == '__main__':  # Testing Starting Window
     start_window = Window()
+
     start_window.mainloop()
     print("buiten mainloop")
     quit()
