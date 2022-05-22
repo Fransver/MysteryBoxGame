@@ -4,7 +4,7 @@ from game.layer.tkinter.Buttons import *
 from game.layer.tkinter.LevelButtons import *
 from game.layer.tkinter.Labels import *
 from game.layer.tkinter.Photos import *
-from PIL import ImageTk, Image
+
 
 
 class Window(tk.Tk):

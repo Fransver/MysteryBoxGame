@@ -1,9 +1,9 @@
 import threading
 
 from tkinter import *
-from game.games.CameraGameMedium import *
-from game.games.CameraEasy import *
-from game.games.CameragameHard import *
+from game.mode.CameraGameMedium import *
+from game.mode.CameraEasy import *
+from game.mode.CameragameHard import *
 
 
 # Hier nu de spellen met Lambda doorgegeven aan de knoppen.

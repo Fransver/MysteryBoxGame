@@ -3,6 +3,7 @@ import keyboard
 import random
 import game.commands
 
+
 from game.commands.SpelActies import *
 from game.layer.mediapipe.HandenDectector import detectHandsLandmarks
 from game.layer.opencv.cvActie import *
@@ -12,9 +13,11 @@ from game.commands.Codes import *
 from game.commands.Messages import *
 from game.commands.Score import *
 from game.commands.LevelTimer import *
+from game.layer.pygame.Sound import *
 
 
 # Todo: Add Sounds library
+
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -93,6 +96,8 @@ def camera_game_level_1(timer):
 
             elif sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 nietGoed(frame)
+                play_fail_sound()
+
 
         # ================================
         geheimeCodeCv(frame, ingevoerdeCode)

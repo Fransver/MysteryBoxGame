@@ -1,4 +1,4 @@
-from game.games import CameraEasy
+from game.mode import CameraEasy
 from game.commands.LevelTimer import *
 
 

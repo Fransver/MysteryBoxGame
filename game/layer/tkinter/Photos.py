@@ -7,7 +7,7 @@ import os
 # TODO: Gebruik van module os om absolute path om te zetten.
 # TODO: Testen van het pad op laptop
 
-start_photo = "C:/Users/frans.verberne/PycharmProjects/handtrackingfrans/game/layer/tkinter/tkinterimg/box.jpg"
+start_photo = "D:/Pycharm/CameraGame/HandTrackingFrans/game/layer/tkinter/tkinterimg/box.jpg"
 
 start_join = os.path.join("/tkinterimg", "/box.jpg")
 

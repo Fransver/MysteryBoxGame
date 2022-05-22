@@ -3,6 +3,10 @@ import random
 from game.commands.Codes import *
 
 
+# Code false message
+# Timer testen
+# Test driven dev (als timer bijv op 0 staat een message)
+
 class TestCodeAction(unittest.TestCase):
 
     def test_code_standaard_actie_append_from_given_code(self):  # eerste eenvoudige test
@@ -21,8 +25,6 @@ class TestCodeAction(unittest.TestCase):
         given_numbers = 4
 
         self.assertEqual(given_numbers, random_code_length)
-
-
 
 
 if __name__ == '__main__':

@@ -6,4 +6,4 @@ import random
 import tkinter as tk
 import threading
 import matplotlib.pyplot as plt
-
+import keyboard
