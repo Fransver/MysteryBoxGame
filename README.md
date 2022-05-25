@@ -1,6 +1,6 @@
 # Mystery Box Camera Game 
 
-![This is an image](https://s3.us-east-2.amazonaws.com/surdek/media/blog/_1200xAUTO_fit_center-center_90_none/mysterious-box-agile.jpg)
+<img src="https://s3.us-east-2.amazonaws.com/surdek/media/blog/_1200xAUTO_fit_center-center_90_none/mysterious-box-agile.jpg" width="600">
 
 ### 25-05-2022 README update     
 In the last update I've added the following things:
