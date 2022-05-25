@@ -1,4 +1,4 @@
-**Mystery Box Camera Game **
+# Mystery Box Camera Game 
 
 ** 25-05-2022 README update     
 In the last update I've added the following things:
