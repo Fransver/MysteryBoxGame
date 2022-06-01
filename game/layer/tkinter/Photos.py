@@ -4,10 +4,8 @@ from PIL import ImageTk, Image
 from pathlib import Path
 import os
 
-# TODO: Gebruik van module os om absolute path om te zetten.
-# TODO: Testen van het pad op laptop
 
-start_photo = "D:/Pycharm/CameraGame/HandTrackingFrans/game/layer/tkinter/tkinterimg/box.jpg"
+start_photo = "C:/Users/frans.verberne/PycharmProjects/handtrackingfrans/game/layer/tkinter/tkinterimg/box.jpg"
 
 start_join = os.path.join("/tkinterimg", "/box.jpg")
 
@@ -20,5 +18,3 @@ class StartPhoto:
         self.start_img_label = Label(root, image=start_img)
         self.start_img_label.photo = start_img  # verankeren foto met .photo
         self.start_img_label.place(x=200, y=250)
-
-
