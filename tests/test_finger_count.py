@@ -1,7 +1,7 @@
 import unittest
-from game.layer.visualisation.CountFingers import *
 
-count = count_hands() # Count class maken
+
+count = {'RIGHT': 0, 'LEFT': 0}
 
 
 class TestMockFingersCount(unittest.TestCase):
