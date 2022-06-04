@@ -2,7 +2,7 @@ import unittest
 
 
 count = {'RIGHT': 0, 'LEFT': 0}
-
+#cv2 eruit gehaald
 
 class TestMockFingersCount(unittest.TestCase):
 
