@@ -5,13 +5,12 @@ import game.commands
 
 from game.commands.SpelActies import *
 from game.layer.visualisation.HandenDectector import detectHandsLandmarks
-from layer.visualisation.cvActie import *
+from game.layer.visualisation.cvActie import *
 from game.layer.visualisation.CountFingers import countFingers
-from mysteryBox.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
 from game.commands.Score import *
-from game.layer.sound.Sound import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()

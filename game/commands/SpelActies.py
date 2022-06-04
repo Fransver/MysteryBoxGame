@@ -1,4 +1,4 @@
-from mysteryBox.SerialArduinoMocked import SerialArduinoMocked
+from game.mysteryBox.SerialArduinoMocked import SerialArduinoMocked
 import time
 
 # ================ Attributes

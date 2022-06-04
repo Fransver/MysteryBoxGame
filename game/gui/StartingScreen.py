@@ -1,10 +1,9 @@
 import tkinter as tk
 
-from layer.visualisation.Buttons import *
-from layer.visualisation.LevelButtons import *
-from layer.visualisation.Labels import *
-from layer.visualisation.Photos import *
-
+from game.layer.visualisation.Buttons import *
+from game.layer.visualisation.LevelButtons import *
+from game.layer.visualisation.Labels import *
+from game.layer.visualisation.Photos import *
 
 
 class Window(tk.Tk):
