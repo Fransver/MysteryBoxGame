@@ -24,6 +24,7 @@ mediapipe~=0.8.10
 Nuitka==0.8.3
 numpy==1.22.4
 opencv-contrib-python==4.5.5.64
+opencv-python==4.5.5.64
 packaging==21.3
 pefile==2022.5.30
 Pillow~=9.1.1
