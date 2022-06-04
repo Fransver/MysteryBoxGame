@@ -1,9 +1,9 @@
 import cv2
 
-from game.layer.mediapipe.HandenDectector import detectHandsLandmarks
-from game.layer.mediapipe.CountFingers import countFingers
-from game.layer.mediapipe.CountFingers import mp_hands
-from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.layer.visualisation.HandenDectector import detectHandsLandmarks
+from game.layer.visualisation.CountFingers import countFingers
+from game.layer.visualisation.CountFingers import mp_hands
+from mysteryBox.SerialArduinoMocked import SerialArduinoMocked
 
 # Aanvulling na sprintdemo
 # ================================ Arduino Creëren
@@ -53,9 +53,9 @@ while cap.isOpened():  # connectie met camera
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
 
         # Opmaak camerateller uit de code van de vingerteller halen
-        if (sum(count.values()) == gegevenCode[0]):
+        if sum(count.values()) == gegevenCode[0]:
 
-            cv2.putText(frame, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+            cv2.putText(frame, "Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
             cv2.rectangle(frame, pt1=(150, 150), pt2=(100, 100), color=(0, 255, 0), thickness=-1)
 
             ingevoerdeCode.append(gegevenCode[0])

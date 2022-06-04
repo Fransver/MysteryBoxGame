@@ -2,32 +2,32 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import mediapipe as mp
 
-#================================
+# ================================
 
 # Handen creëren
-mp_hands = mp.solutions.hands # mediapipe koppelen
+mp_hands = mp.solutions.hands  # visualisation koppelen
 
-hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5) # de 2 handen
+hands = mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5)  # de 2 handen
 # Static image mode staat op True zodat hij de input als IMAGE behandeld.
 # Dit is ideaal voor het behandelen van VIDEO-FRAMES (voor bijvoorbeeld gebarentaal etc.)
 # Voor het actief tracken moet ik deze dus op FALSE zetten.
 # Min detection confidence op 0.5 is dat alle trackings die minder betrouwbaar als 50% zijn worden genegeerd.
 
-mp_drawing = mp.solutions.drawing_utils # tekenen om de handen
+mp_drawing = mp.solutions.drawing_utils  # tekenen om de handen
 
-#================================
+# ================================
 # Plaatje eigenschappen
 image = cv.imread('images/telplaatjes/hand1.jpg')
 # Grootte van figuur bepalen.
 plt.figure(figsize=[10, 10])
-plt.title("Sample Image", fontsize = 40)
+plt.title("Sample Image", fontsize=40)
 plt.axis('off')
 plt.imshow(image[:, :, ::-1])
 plt.show()
 
-#================================
+# ================================
 
-results = hands.process(cv.cvtColor(image, cv.COLOR_BGR2RGB)) # converteren van BGR naar RGB
+results = hands.process(cv.cvtColor(image, cv.COLOR_BGR2RGB))  # converteren van BGR naar RGB
 # Plaatje omzetten naar specifieke schaal om preciezer de landmarks te tekenen.
 # Plaatje converteren en detecteren
 # Perform hands landmarks detection after converting the image into RGB format.
@@ -51,7 +51,7 @@ if results.multi_hand_landmarks:
             print(f'{mp_hands.HandLandmark(i).name}:')
             print(f'{hand_landmarks.landmark[mp_hands.HandLandmark(i).value]}')
 
-#================================
+# ================================
 
 image_height, image_width, _ = image.shape
 
@@ -74,7 +74,7 @@ if results.multi_hand_landmarks:
             print(f'y: {hand_landmarks.landmark[mp_hands.HandLandmark(i).value].y * image_height}')
             print(f'z: {hand_landmarks.landmark[mp_hands.HandLandmark(i).value].z * image_width}\n')
 
-#================================
+# ================================
 # Hier maak ik een kopie van de input om de marks op te tekenen.
 img_copy = image.copy()
 
@@ -91,13 +91,9 @@ if results.multi_hand_landmarks:
     fig = plt.figure(figsize=[20, 20])
 
     # Display the resultant image with the landmarks drawn, also convert BGR to RGB for display.
-    plt.title("Resultant Image", fontsize = 40);
-    plt.axis('off');
-    plt.imshow(img_copy[:, :, ::-1]);
+    plt.title("Resultant Image", fontsize=40)
+    plt.axis('off')
+    plt.imshow(img_copy[:, :, ::-1])
     plt.show()
 
 # ================================
-
-
-
-

@@ -4,7 +4,7 @@ import mediapipe as mp
 
 # ================================
 # Handen creëren
-mp_hands = mp.solutions.hands  # mediapipe koppelen
+mp_hands = mp.solutions.hands  # visualisation koppelen
 hands = mp_hands.Hands
 mp_drawing = mp.solutions.drawing_utils
 

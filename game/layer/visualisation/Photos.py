@@ -1,13 +1,12 @@
 import os.path
 from tkinter import *
 from PIL import ImageTk, Image
-from pathlib import Path
 import os
 
 
-start_photo = "C:/Users/frans.verberne/PycharmProjects/handtrackingfrans/game/layer/tkinter/tkinterimg/box.jpg"
+start_photo = "game/layer/visualisation/tkinterimg/box.jpg"
 
-start_join = os.path.join("/tkinterimg", "/box.jpg")
+start_join = os.path.join("tkinterimg", "box.jpg")
 
 
 class StartPhoto:

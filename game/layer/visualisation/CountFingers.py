@@ -11,6 +11,10 @@ mp_drawing = mp.solutions.drawing_utils
 
 # ================================
 
+def count_hands():
+    count = {'RIGHT': 0, 'LEFT': 0}
+    return count
+
 
 def countFingers(image, results, draw=True, display=True):
     # Breedte en Hoogte van de input
@@ -19,9 +23,10 @@ def countFingers(image, results, draw=True, display=True):
     # Kopie maken om de vingers op te tekenen.
     output_image = image.copy()
 
+    count = count_hands()
+
     # Een dictionary bevat niet te dupliceren items. Ze kunnen overschreven worden door een duplicate.
     # Vorm lijkt een beetje op JSON.
-    count = {'RIGHT': 0, 'LEFT': 0}
 
     # Wederom een dictionary voor de boolean waardes van beide handen.
     fingers_statuses = {'RIGHT_THUMB': False, 'RIGHT_INDEX': False, 'RIGHT_MIDDLE': False, 'RIGHT_RING': False,

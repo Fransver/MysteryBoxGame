@@ -1,24 +1,20 @@
 import threading
-
 from tkinter import *
-from game.mode.CameraGameMedium import *
-from game.mode.CameraEasy import *
-from game.mode.CameragameHard import *
-
+from game.mode.CameraGame import *
 
 # Hier nu de spellen met Lambda doorgegeven aan de knoppen.
 
 
 def thread_game_easy():
-    threading.Thread(CameraGameEasy().game(timer=TimeGame().seconds)).start()
+    threading.Thread(CameraGame().game(timer=90)).start()
 
 
 def thread_game_medium():
-    threading.Thread(CameraGameMedium().game(timer=TimeGame().seconds_level_2)).start()
+    threading.Thread(CameraGame().game(timer=40)).start()
 
 
 def thread_game_hard():
-    threading.Thread(CameraGameHard().game(timer=TimeGame().seconds_level_3)).start()
+    threading.Thread(CameraGame().game(timer=20)).start()
 
 
 class LevelEasyButton:

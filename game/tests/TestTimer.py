@@ -12,4 +12,3 @@ class TestTimer(unittest.TestCase):
 
         self.assertTrue(stressful_tune, msg="Tune is playing")
         self.assertEqual(timer, 10)
-

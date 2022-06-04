@@ -1,23 +1,17 @@
-import game.layer.mediapipe.Hands
+import game.layer.visualisation.Hands
 import keyboard
 import random
 import game.commands
 
-
 from game.commands.SpelActies import *
-from game.layer.mediapipe.HandenDectector import detectHandsLandmarks
-from game.layer.opencv.cvActie import *
-from game.layer.mediapipe.CountFingers import countFingers
-from game.mysteryBox.arduino.SerialArduinoMocked import SerialArduinoMocked
+from game.layer.visualisation.HandenDectector import detectHandsLandmarks
+from layer.visualisation.cvActie import *
+from game.layer.visualisation.CountFingers import countFingers
+from mysteryBox.SerialArduinoMocked import SerialArduinoMocked
 from game.commands.Codes import *
 from game.commands.Messages import *
 from game.commands.Score import *
-from game.commands.LevelTimer import *
-from game.layer.pygame.Sound import *
-
-
-# Todo: Add Sounds library
-
+from game.layer.sound.Sound import *
 
 # ================================ Arduino Creëren
 arduino = SerialArduinoMocked()
@@ -26,7 +20,7 @@ arduino = SerialArduinoMocked()
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # langzaam openen opgelost door cap dshow
 
 # ================================ HANDS
-hands = game.layer.mediapipe.Hands.handen()
+hands = game.layer.visualisation.Hands.handen()
 
 # ================================ Code
 ingevoerdeCode = []
@@ -45,7 +39,7 @@ score = Score()
 
 # ================================ Window
 
-class CameraGameEasy:
+class CameraGame:
     def __init__(self):
         self.score = score.score
         self.game = camera_game_level_1
@@ -54,7 +48,7 @@ class CameraGameEasy:
 # ================================ CameraGame functie
 def camera_game_level_1(timer):
     prev = time.time()
-    TIMER = timer  # <------ Timer secondes aanpassen moeilijkheidsgraad via class LevelTimer
+    TIMER = timer  # <------ Timer secondes aanpassen
 
     while cap.isOpened():  # connectie met camera
 
@@ -96,7 +90,6 @@ def camera_game_level_1(timer):
 
             elif sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 nietGoed(frame)
-                play_fail_sound()
 
 
         # ================================
@@ -111,8 +104,6 @@ def camera_game_level_1(timer):
                 time.sleep(5)
             break
 
-        # voor de exit kan ik nog een CV actie plaatsen, testen!
-
         # Display het frame.
         displayFrame(frame)
         k = cv2.waitKey(1)
@@ -126,6 +117,6 @@ def camera_game_level_1(timer):
 
 
 if __name__ == '__main__':
-    game = CameraGameEasy()
-    game.game(timer=TimeGame().seconds)
+    game = CameraGame()
+    game.game(timer=90)
     quit()

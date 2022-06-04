@@ -1,9 +1,9 @@
 import tkinter as tk
 
-from game.layer.tkinter.Buttons import *
-from game.layer.tkinter.LevelButtons import *
-from game.layer.tkinter.Labels import *
-from game.layer.tkinter.Photos import *
+from layer.visualisation.Buttons import *
+from layer.visualisation.LevelButtons import *
+from layer.visualisation.Labels import *
+from layer.visualisation.Photos import *
 
 
 
@@ -43,17 +43,6 @@ class Window(tk.Tk):
         self.configure(background='red')
         self.title("fail fail fail")
         self.home_label.update_tryagain()
-
-    # function for video streaming
-    # def video_stream(self):
-    #     cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    #     _, frame = cam.read()
-    #     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
-    #     img = Image.fromarray(cv2image)
-    #     imgtk = ImageTk.PhotoImage(image=img)
-    #     self.lmain.imgtk = imgtk
-    #     self.lmain.configure(image=imgtk)
-    #     self.lmain.after(1, self.video_stream)
 
 
 if __name__ == '__main__':  # Testing Starting Window

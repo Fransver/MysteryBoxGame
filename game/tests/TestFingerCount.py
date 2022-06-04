@@ -1,13 +1,14 @@
 import unittest
+from game.layer.visualisation.CountFingers import *
+
+count = count_hands() # Count class maken
 
 
 class TestMockFingersCount(unittest.TestCase):
 
     def test_count_of_fingers_mock_output(self):
         game_code = [3, 2, 4, 1]  # game code for comparison
-        count = {'RIGHT': 0, 'LEFT': 0}  # dict for mocking finger-count
         count['RIGHT'] += 3  # incrementing Right hand 3 fingers
-
         result = sum(count.values())
         first_code = game_code[0]
 
@@ -17,8 +18,6 @@ class TestMockFingersCount(unittest.TestCase):
     def test_message_count_fingers_not_correct(self):
         cv_message_incorrect = False
         game_code = [3, 2, 4, 1]  # game code for comparison
-        count = {'RIGHT': 0, 'LEFT': 0}  # dict for mocking finger-count
-
         count['RIGHT'] += 5  # incrementing Right hand 5 fingers
         result = sum(count.values())
         first_code = game_code[0]

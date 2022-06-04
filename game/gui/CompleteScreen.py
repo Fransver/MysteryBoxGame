@@ -1,4 +1,4 @@
-from game.states.StartingScreen import Window
+from game.gui.StartingScreen import Window
 
 
 class CompleteScreen(Window):

@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 
 
-
 # teken module
 mp_draw = mp.solutions.drawing_utils
 mp_draw_styles = mp.solutions.drawing_styles
@@ -67,7 +66,7 @@ def leukNietleukSpel():
                         # Leuk
                         if lm_list[thumbTip].y < lm_list[thumbTip - 1].y < lm_list[thumbTip - 2].y:
                             print("Leuk")
-                            cv2.putText(img, "Leuk", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
+                            cv2.putText(img, "Leuk", (50, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
 
                         # Niet Leuk
                         if lm_list[thumbTip].y > lm_list[thumbTip - 1].y > lm_list[thumbTip - 2].y:
@@ -75,8 +74,17 @@ def leukNietleukSpel():
                             print("Niet leuk")  # Hiermee print ik een niet leuk teken op het scherm
 
         cv2.imshow("Hand Tracking", img)
-        cv2.waitKey(1)
+
+        k = cv2.waitKey(1)
+
+        # ESCAPE is afsluiten programma
+        if k == 27:
+            break
+
+        # cap.release()  # dit blockt het opnieuw openen van de webcam
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
     leukNietleukSpel()
+    quit()

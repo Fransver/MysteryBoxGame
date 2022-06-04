@@ -1,4 +1,4 @@
-from game.states.StartingScreen import *
+from game.gui.StartingScreen import *
 
 
 class FailScreen(Window):
