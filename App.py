@@ -1,4 +1,4 @@
-from game.gui.StartingScreen import Window
+from game.gui.UserScreen import Window
 
 
 def main():
@@ -9,3 +9,7 @@ def main():
 if __name__ == '__main__':
     main()
     quit()
+
+#TODO: Reset code when selecting other setting game.
+#TODO: Monkey-test code.
+#TODO: Add unit-tests.

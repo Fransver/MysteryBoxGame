@@ -21,9 +21,12 @@ def nietGoed(frame):
     cv2.putText(frame, "Niet Goed", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
 
-def eindeSpel(frame):
-    cv2.putText(frame, "Einde spel", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-    print("Einde spel")
+def almost_time(frame):
+    cv2.putText(frame, "Time's almost up !!!", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+
+
+def end_game():
+    print("You lost, please try again!!")
 
 
 def displayFrame(frame):

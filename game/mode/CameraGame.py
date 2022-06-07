@@ -1,3 +1,5 @@
+import cv2
+
 import game.layer.visualisation.Hands
 import keyboard
 import random
@@ -90,18 +92,14 @@ def camera_game_level_1(timer):
             elif sum(count.values()) != geheimeCodeStandaard.code[0] and keyboard.is_pressed('v'):
                 nietGoed(frame)
 
-
         # ================================
         geheimeCodeCv(frame, ingevoerdeCode)
-
-        if TIMER <= 0:
-            score.update_score_loss()
-            print(score.score)
-            if score.score == 2:
-                print("test met timer aflopen actie")
-                eindeSpel(frame)
-                time.sleep(5)
+        if len(ingevoerdeCode) < 4 and TIMER == 0:
+            end_game()
             break
+
+        if len(ingevoerdeCode) < 4 and TIMER < 4:
+            almost_time(frame)
 
         # Display het frame.
         displayFrame(frame)
@@ -109,6 +107,7 @@ def camera_game_level_1(timer):
 
         # ESCAPE is afsluiten programma
         if k == 27:
+            ingevoerdeCode.clear()
             break
 
     # cap.release()  # dit blockt het opnieuw openen van de webcam

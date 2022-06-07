@@ -5,7 +5,6 @@ import os
 
 
 start_photo = "game/layer/visualisation/tkinterimg/box.jpg"
-
 start_join = os.path.join("tkinterimg", "box.jpg")
 
 

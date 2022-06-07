@@ -11,7 +11,7 @@ class Window(tk.Tk):
     def __init__(self):  # spel meegeven in de app
         # ====================================== Scherm creëren
         super().__init__()
-        self.title('MysteryBox Starting Screen')
+        self.title('MysteryBox CameraGame')
         self.geometry('800x600+50+50')
         self.configure(background="#A67538")
 
@@ -23,10 +23,8 @@ class Window(tk.Tk):
         self.game_label = Gamelabel(root=self)
 
         # Buttons
-        # self.sound_game_button = SoundGameButton(root=self)
         self.explain_button = ExplanationButton(root=self)
         self.quit_button = QuitButton(root=self)
-        # self.input_button = InputButton(root=self, code_print=self.code_input.e.get())  # <----gebruiken invoer blank
 
         self.level_1_button = LevelEasyButton(root=self)
         self.level_2_button = LevelMediumButton(root=self)

@@ -2,8 +2,6 @@ import threading
 from tkinter import *
 from game.mode.CameraGame import *
 
-# Hier nu de spellen met Lambda doorgegeven aan de knoppen.
-
 
 def thread_game_easy():
     threading.Thread(CameraGame().game(timer=90)).start()
