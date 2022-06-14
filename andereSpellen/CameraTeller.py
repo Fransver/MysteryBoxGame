@@ -5,6 +5,7 @@ from game.layer.visualisation.CountFingers import countFingers
 from game.layer.visualisation.CountFingers import mp_hands
 from mysteryBox.SerialArduinoMocked import SerialArduinoMocked
 
+
 # Aanvulling na sprintdemo
 # ================================ Arduino Creëren
 

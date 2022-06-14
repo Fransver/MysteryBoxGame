@@ -31,3 +31,6 @@ class TestCodeAction(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# test op detectie met een frame aantal vingers.
+# database

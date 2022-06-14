@@ -17,7 +17,7 @@ mp_drawing = mp.solutions.drawing_utils  # tekenen om de handen
 
 # ================================
 # Plaatje eigenschappen
-image = cv.imread('images/telplaatjes/hand1.jpg')
+image = cv.imread('images/telplaatjes/hand5.jpg')
 # Grootte van figuur bepalen.
 plt.figure(figsize=[10, 10])
 plt.title("Sample Image", fontsize=40)

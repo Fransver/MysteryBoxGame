@@ -1,5 +1,4 @@
 import cv2
-
 import game.layer.visualisation.Hands
 import keyboard
 import random
