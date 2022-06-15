@@ -1,7 +1,3 @@
-import cv2
-import mediapipe
-import matplotlib.pyplot as plt
-
 from game.layer.visualisation.HandenDectector import *
 from game.layer.visualisation.Hands import *
 

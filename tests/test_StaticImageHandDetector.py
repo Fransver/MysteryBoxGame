@@ -2,6 +2,7 @@ import unittest
 import cv2
 import mediapipe as mp
 
+
 from game.layer.visualisation.HandenDectector import detectHandsLandmarks
 
 mp_hands = mp.solutions.hands

@@ -1,5 +1,5 @@
 import cv2
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import mediapipe as mp
 
 # ================================
