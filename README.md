@@ -10,7 +10,17 @@ Within this code-project I've build a game that uses multiple python and C++-ori
 3. When a user wants to capture the output, he/she can press V or the Arduino-button to send the attempt to the algorithm. If the attempt is correct, the number will be shown in the empy code-list, showing in the feed. If it is not correct, a text will be shown that it is not what we are looking for. 
 4. If a player cracks all the numbers of the asked code, the game will be over and will be celebrated by a success message. When the code isn't cracked Within the given time, a fail-screen will appear with the option to try again. 
 
-### CI/CD 
+## Advice on Software System: Python
+
+### Intro
+Within this project I used Python in combination with multiple libraries and modules to create a object-detection-game. At the start of this project I didn't know much about Python and certainly not about the used modules. At this point I think I can provide useful advice about the usage of these libraries and modules to create your own detection-game! 
+
+### Python 
+The project is build in Python. The reason why I used is that I read online that Python is very flexible for importing other libraries and is widely used for A.I. and Machine Learning applications. After completing my project I certainly can confirm this claim. It took some time to switch from a static language like Java to a interpreted language as Python is. But the switch took way less time than I predicted at first. When I started building the hand-detector, importing "Mediapipe" was easy. Within my IDE you only have to import the name en Python (on Pycharm) does the rest of the work. What I really liked about Python was the interpretation-power at compiling time. It knows what you mean, without having to specify. The indentation of Python is something that I liked less (however I think it is something where you can easily adapt to). In Java, curly brackets are used for beginning and endings. I struggled with the correct indentation at first and lost valuable hours before I understood the concept. 
+
+### Modules and Libraries
+
+## CI/CD 
 
 Within my project I wanted to learn more about Continious Integration and deployment and its strengths. I knew nothing about these concepts but studied the sources here on Git, together with a project-colleague. Together we tried to figure out wat CI/CD is and how it can benefit our project. The main source that I used for the research was [GITLAB CI/CD](https://docs.gitlab.com/ee/ci/). This source provided everything from the basics to project specific tutorials and tips. Also, the tutorial video wihtin the gitlab-section helped me understand the different concepts of building CI/CD pipelines. In my own code repository, these where the main steps for completing a working CI/CD-pipeline:
 1. Setting up .yml 
@@ -22,7 +32,7 @@ When I failed in setting up a virtual environment in a terminal, my project-coll
 4. Build jobs 
 The last step was connecting my unit-tests to the .yml file. For this I had to create a requirements.txt file for installing the needed moudels for the app. This was also new for me. I searched and found an easy option with "PIP-FREEZE". This created a .txt for me with all installed requirements. It was a large file and I knew that not all requirements where needed (some where installed when trying different libraries). I decided to delete the requirements, uninstall all libraries and start from scratch. After some time I got my application running again with the requirements cut by tenfold. 
 
-## Conclusion
+### Conclusion
 After completing this whole process of learning unfamilliar concepts in CI/CD I know now how to set up Continious Integration wihtin a repository. I understand the power of automating the process to prevent merge-conflicts and sticking to a projects syntax. I learned about setting up a testing-device with a runner, a docker virtual machine and collect the necessary requirements. All combbined in a easy to follow .yml file. 
 This process was formed at the end of the semester but was a big learning-curve to take. I am glad to have taken on this challenge and will use the knowledge for all my future projects that can benefit from CI/CD. 
 
