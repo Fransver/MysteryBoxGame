@@ -1,13 +1,14 @@
 import unittest
+from game.layer.visualisation.CountFingers import count_hands
+
+count = count_hands()
 
 
-
-count = {'RIGHT': 0, 'LEFT': 0}
-#cv2 eruit gehaald
+# This unit test is created to precent breakage in Count dictonary within CountFingers Class
 
 class TestMockFingersCount(unittest.TestCase):
 
-    def test_count_of_fingers_mock_output(self):
+    def test_count_of_fingers(self):
         game_code = [3, 2, 4, 1]  # game code for comparison
         count['RIGHT'] += 3  # incrementing Right hand 3 fingers
         result = sum(count.values())

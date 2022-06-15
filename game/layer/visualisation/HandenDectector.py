@@ -40,13 +40,6 @@ def detectHandsLandmarks(image, hands, draw=True, display=True):
 
     if display:
         # Display origineel en output plaatje
-        plt.figure(figsize=[15, 15])
-        plt.subplot(121)
-        plt.imshow(image[:, :, ::-1])
-        plt.title("Original Image", fontsize=40)
-        plt.show()
-        plt.axis('off')
-
         plt.subplot(122)
         plt.imshow(output_image[:, :, ::-1])  # imshow / matplot en tkinter Matplot vervangen door Tkinter.
         plt.title("Output", fontsize=40)

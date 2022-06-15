@@ -90,16 +90,15 @@ class ExplanationButton:
         win = tkinter.Toplevel()
         win.geometry('600x300+50+50')
         win.title("Test Explain")
-        win.configure(bg='MediumPurple2')
 
-        explain_label = Label(win, bg='MediumPurple2', pady=3,padx=3, text="Welcome to the CameraGame!!\n"
+        explain_label = Label(win, text="Welcome to the CameraGame!!\n"
                                         "The goal of the game is to crack the code before the timer dies.\n\n"
                                         "The Camera will scan your hands and counts the number of fingers.\n If you"
                                         "want to send a number, the other player must press the button.\n"
                                         "After 0.5 seconds the code will be send to the Mystery Box.\n\n"
                                         "If the number is not in the code, A error-message will appear.\n"
                                         "If the number is correct, it will appear in the GIVEN CODE section\n\n"
-                                        "GOOD LUCK !!\n\n", font=3, foreground='red4')
+                                        "GOOD LUCK !!\n\n")
 
         explain_label.pack()
 

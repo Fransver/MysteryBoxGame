@@ -1,8 +1,9 @@
-import cv2
 import game.layer.visualisation.Hands
 import keyboard
 import random
 import game.commands
+import cv2
+
 
 from game.commands.SpelActies import *
 from game.layer.visualisation.HandenDectector import detectHandsLandmarks
